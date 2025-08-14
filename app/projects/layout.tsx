@@ -1,11 +1,7 @@
 import { Navigation } from '@/components/layout/navigation';
 import { Footer } from '@/components/layout/footer';
 
-export default function ProjectsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
       <Navigation />

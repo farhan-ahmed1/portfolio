@@ -77,11 +77,14 @@
   body {
     @apply bg-background text-foreground;
   }
-  
+
   /* Subtle texture for light theme */
   body:not(.dark) {
-    background-image: 
-      radial-gradient(circle at 1px 1px, rgba(71, 85, 105, 0.25) 1px, transparent 0);
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(71, 85, 105, 0.25) 1px,
+      transparent 0
+    );
     background-size: 24px 24px;
     background-attachment: fixed;
   }

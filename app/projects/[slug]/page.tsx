@@ -13,7 +13,7 @@ interface ProjectPageProps {
 export async function generateMetadata({ params }: ProjectPageProps) {
   const { slug } = await params;
   const project = await getProjectBySlug(slug);
-  
+
   if (!project) {
     return {
       title: 'Project Not Found',
@@ -43,7 +43,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <article className="container py-12 pt-24">
       <ProjectHeader project={project} />
       <ProjectMetrics slug={project.slug} />
-      
+
       <div className="prose prose-lg mx-auto">
         <MDXContent content={project.content} />
       </div>

@@ -40,12 +40,12 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
 
   const handleLike = async () => {
     if (isLiked) return; // Prevent double-liking
-    
+
     try {
       const response = await fetch(`/api/likes/${slug}`, { method: 'POST' });
       if (response.ok) {
         const data = await response.json();
-        setMetrics(prev => ({ ...prev, likes: data.likes }));
+        setMetrics((prev) => ({ ...prev, likes: data.likes }));
         setIsLiked(true);
       }
     } catch (error) {
@@ -74,10 +74,10 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
         <Eye className="h-4 w-4" />
         <span>{metrics.views.toLocaleString()} views</span>
       </div>
-      
+
       <button
         onClick={handleLike}
-        className={`flex items-center gap-2 transition-colors hover:text-red-500 focus-ring rounded-sm ${
+        className={`focus-ring flex items-center gap-2 rounded-sm transition-colors hover:text-red-500 ${
           isLiked ? 'text-red-500' : ''
         }`}
         disabled={isLiked}

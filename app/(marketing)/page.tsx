@@ -1,25 +1,25 @@
-"use client"
+'use client';
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { useTheme } from "next-themes"
-import Particles from "@/components/ui/particles"
-import { TypingAnimation } from "@/components/animations"
-import { Timeline } from "@/components/sections/timeline"
-import { ArrowUpRight } from "lucide-react"
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import Particles from '@/components/ui/particles';
+import { TypingAnimation } from '@/components/animations';
+import { Timeline } from '@/components/sections/timeline';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function HomePage() {
-  const [scrollY, setScrollY] = useState(0)
-  const [mounted, setMounted] = useState(false)
-  const { theme } = useTheme()
+  const [scrollY, setScrollY] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
-    setMounted(true)
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    setMounted(true);
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-300/60 via-slate-200/70 to-slate-300/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
       {/* Particles Background */}
@@ -40,7 +40,7 @@ export default function HomePage() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-4xl text-center"
         >
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -48,14 +48,15 @@ export default function HomePage() {
           >
             <TypingAnimation />
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400 sm:text-xl"
           >
-            I love solving problems with code, creating problems with code, and then solving those problems with code until... I don&apos;t ¯\_(ツ)_/¯
+            I love solving problems with code, creating problems with code, and then solving those
+            problems with code until... I don&apos;t ¯\_(ツ)_/¯
           </motion.p>
 
           {/* Navigation Links */}
@@ -66,10 +67,10 @@ export default function HomePage() {
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
           >
             {[
-              { href: "/about", label: "About" },
-              { href: "/projects", label: "Projects" },
-              { href: "/contact", label: "Contact" },
-              { href: "/resume", label: "Resume" },
+              { href: '/about', label: 'About' },
+              { href: '/projects', label: 'Projects' },
+              { href: '/contact', label: 'Contact' },
+              { href: '/resume', label: 'Resume' },
             ].map((link, index) => (
               <motion.div
                 key={link.href}
@@ -82,7 +83,7 @@ export default function HomePage() {
                   className="group relative inline-flex items-center gap-2 rounded-lg bg-white/50 px-6 py-3 text-sm font-medium text-slate-900 backdrop-blur-sm transition-all hover:bg-white/70 hover:shadow-lg dark:bg-slate-800/50 dark:text-slate-100 dark:hover:bg-slate-800/70"
                 >
                   {link.label}
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
               </motion.div>
             ))}
@@ -94,19 +95,19 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: scrollY < 100 ? 1 : 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 transform"
         >
           <div className="flex flex-col items-center gap-2 text-slate-400 dark:text-slate-500">
             <span className="text-xs font-medium">Scroll to explore</span>
             <motion.div
               animate={{ y: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-5 h-8 border border-slate-300 dark:border-slate-600 rounded-full flex justify-center"
+              className="flex h-8 w-5 justify-center rounded-full border border-slate-300 dark:border-slate-600"
             >
               <motion.div
                 animate={{ y: [5, 15, 5] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1 h-3 bg-slate-400 dark:bg-slate-500 rounded-full mt-1"
+                className="mt-1 h-3 w-1 rounded-full bg-slate-400 dark:bg-slate-500"
               />
             </motion.div>
           </div>
@@ -114,7 +115,7 @@ export default function HomePage() {
       </div>
 
       {/* Timeline Section - Scrollable */}
-      <div className="relative z-10 py-24 px-4">
+      <div className="relative z-10 px-4 py-24">
         <div className="container mx-auto flex justify-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -129,7 +130,7 @@ export default function HomePage() {
       </div>
 
       {/* Call to Action Section */}
-      <div className="relative z-10 py-16 px-4">
+      <div className="relative z-10 px-4 py-16">
         <div className="container mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -140,7 +141,7 @@ export default function HomePage() {
             <p className="mb-6 text-slate-600 dark:text-slate-400">
               Interested in working together?
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-600"
@@ -160,5 +161,5 @@ export default function HomePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { ExternalLink, Github, Eye, Heart } from "lucide-react"
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
+import { ExternalLink, Github, Eye, Heart } from 'lucide-react';
 
 // Placeholder project components
 export function ProjectGrid({ projects }: { projects: any[] }) {
@@ -18,8 +18,8 @@ export function ProjectGrid({ projects }: { projects: any[] }) {
         >
           <Card className="group h-full">
             <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
+              <div className="mb-4 flex items-start justify-between">
+                <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-accent">
                   {project.title}
                 </h3>
                 <div className="flex gap-2">
@@ -47,12 +47,12 @@ export function ProjectGrid({ projects }: { projects: any[] }) {
                   )}
                 </div>
               </div>
-              
-              <p className="text-sm text-muted-foreground mb-4 overflow-hidden">
+
+              <p className="mb-4 overflow-hidden text-sm text-muted-foreground">
                 {project.summary}
               </p>
-              
-              <div className="flex flex-wrap gap-2 mb-4">
+
+              <div className="mb-4 flex flex-wrap gap-2">
                 {project.tech.map((tech: string) => (
                   <span
                     key={tech}
@@ -62,23 +62,19 @@ export function ProjectGrid({ projects }: { projects: any[] }) {
                   </span>
                 ))}
               </div>
-              
+
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1">
-                    <Eye className="h-3 w-3" />
-                    0 views
+                    <Eye className="h-3 w-3" />0 views
                   </span>
                   <span className="flex items-center gap-1">
-                    <Heart className="h-3 w-3" />
-                    0 likes
+                    <Heart className="h-3 w-3" />0 likes
                   </span>
                 </div>
-                <span className="text-xs">
-                  {new Date(project.date).getFullYear()}
-                </span>
+                <span className="text-xs">{new Date(project.date).getFullYear()}</span>
               </div>
-              
+
               <Link
                 href={`/projects/${project.slug}`}
                 className="absolute inset-0 z-10"
@@ -89,7 +85,7 @@ export function ProjectGrid({ projects }: { projects: any[] }) {
         </motion.div>
       ))}
     </div>
-  )
+  );
 }
 
 export function ProjectFilters() {

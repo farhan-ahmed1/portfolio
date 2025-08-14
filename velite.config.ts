@@ -1,4 +1,4 @@
-import { defineConfig, defineCollection, s } from 'velite'
+import { defineConfig, defineCollection, s } from 'velite';
 
 const projects = defineCollection({
   name: 'Project',
@@ -11,10 +11,12 @@ const projects = defineCollection({
       date: s.isodate(),
       tech: s.array(s.string()),
       role: s.string(),
-      links: s.object({
-        github: s.string().optional(),
-        live: s.string().optional(),
-      }).optional(),
+      links: s
+        .object({
+          github: s.string().optional(),
+          live: s.string().optional(),
+        })
+        .optional(),
       coverImage: s.string(),
       gallery: s.array(s.string()).optional(),
       impact: s.array(s.string()).optional(),
@@ -24,8 +26,8 @@ const projects = defineCollection({
     .transform((data) => ({
       ...data,
       url: `/projects/${data.slug}`,
-    }))
-})
+    })),
+});
 
 export default defineConfig({
   root: './content',
@@ -41,4 +43,4 @@ export default defineConfig({
     rehypePlugins: [],
     remarkPlugins: [],
   },
-})
+});

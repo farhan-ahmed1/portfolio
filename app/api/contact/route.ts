@@ -8,10 +8,10 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    
+
     // Validate the request body
     const validatedData = contactSchema.parse(body);
-    
+
     // Save to database
     const message = await prisma.message.create({
       data: {
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
         body: validatedData.body,
       },
     });
-    
+
     // Send email notification
     if (resend) {
       await resend.emails.send({
@@ -36,24 +36,18 @@ export async function POST(request: NextRequest) {
         `,
       });
     }
-    
+
     return NextResponse.json(
       { message: 'Message sent successfully', id: message.id },
       { status: 201 }
     );
   } catch (error) {
     console.error('Contact form error:', error);
-    
+
     if (error instanceof Error && error.name === 'ZodError') {
-      return NextResponse.json(
-        { error: 'Invalid form data' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Invalid form data' }, { status: 400 });
     }
-    
-    return NextResponse.json(
-      { error: 'Failed to send message' },
-      { status: 500 }
-    );
+
+    return NextResponse.json({ error: 'Failed to send message' }, { status: 500 });
   }
 }

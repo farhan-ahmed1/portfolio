@@ -1,7 +1,6 @@
 {
   "moderate": true,
-  "allowlist": [
-  ],
+  "allowlist": [],
   "report-type": "summary",
   "output-format": "text"
 }

@@ -10,7 +10,7 @@ jobs:
   update-dependencies:
     name: update dependencies
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -44,7 +44,7 @@ jobs:
           title: 'chore: update dependencies'
           body: |
             This PR updates dependencies to their latest versions.
-            
+
             Please review the changes and run tests before merging.
           branch: dependency-updates
           delete-branch: true

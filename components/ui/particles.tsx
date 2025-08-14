@@ -47,11 +47,11 @@ export default function Particles({
 
   useEffect(() => {
     if (!mounted) return;
-    
+
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext('2d');
     }
-    
+
     const resizeCanvas = () => {
       if (canvasContainerRef.current && canvasRef.current && context.current) {
         circles.current.length = 0;
@@ -70,20 +70,20 @@ export default function Particles({
       const y = Math.floor(Math.random() * canvasSize.current.h);
       const translateX = 0;
       const translateY = 0;
-      
+
       // Slightly larger particles for light mode for better visibility
       const isDark = theme === 'dark';
-      const size = isDark 
-        ? Math.floor(Math.random() * 2) + 0.1 
+      const size = isDark
+        ? Math.floor(Math.random() * 2) + 0.1
         : Math.floor(Math.random() * 1.5) + 0.8;
-      
+
       const alpha = 0;
-      
+
       // Higher target alpha for light mode particles
-      const targetAlpha = isDark 
+      const targetAlpha = isDark
         ? parseFloat((Math.random() * 0.6 + 0.1).toFixed(1))
         : parseFloat((Math.random() * 0.8 + 0.3).toFixed(1));
-      
+
       const dx = (Math.random() - 0.5) * 0.2;
       const dy = (Math.random() - 0.5) * 0.2;
       const magnetism = 0.1 + Math.random() * 4;
@@ -107,13 +107,13 @@ export default function Particles({
         context.current.translate(translateX, translateY);
         context.current.beginPath();
         context.current.arc(x, y, size, 0, 2 * Math.PI);
-        
+
         // Theme-aware particle colors with fallback
         const isDark = theme === 'dark';
-        const particleColor = isDark 
-          ? `rgba(255, 255, 255, ${alpha})` 
+        const particleColor = isDark
+          ? `rgba(255, 255, 255, ${alpha})`
           : `rgba(51, 65, 85, ${alpha * 0.8})`; // slate-700 with better opacity for darker background
-        
+
         context.current.fillStyle = particleColor;
         context.current.fill();
         context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -149,7 +149,7 @@ export default function Particles({
       const remapped = ((value - start1) * (end2 - start2)) / (end1 - start1) + start2;
       return remapped > 0 ? remapped : 0;
     };
-    
+
     const initCanvas = () => {
       resizeCanvas();
       drawParticles();
@@ -210,13 +210,13 @@ export default function Particles({
       });
       window.requestAnimationFrame(animate);
     };
-    
+
     initCanvas();
     animate();
-    
+
     const handleResize = () => initCanvas();
     window.addEventListener('resize', handleResize);
-    
+
     const handleMouseMove = (e: MouseEvent) => {
       if (canvasRef.current) {
         const rect = canvasRef.current.getBoundingClientRect();
@@ -230,7 +230,7 @@ export default function Particles({
         }
       }
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
@@ -262,20 +262,20 @@ export default function Particles({
     const y = Math.floor(Math.random() * canvasSize.current.h);
     const translateX = 0;
     const translateY = 0;
-    
+
     // Slightly larger particles for light mode for better visibility
     const isDark = theme === 'dark';
-    const size = isDark 
-      ? Math.floor(Math.random() * 2) + 0.1 
+    const size = isDark
+      ? Math.floor(Math.random() * 2) + 0.1
       : Math.floor(Math.random() * 1.5) + 0.8;
-    
+
     const alpha = 0;
-    
+
     // Higher target alpha for light mode particles
-    const targetAlpha = isDark 
+    const targetAlpha = isDark
       ? parseFloat((Math.random() * 0.6 + 0.1).toFixed(1))
       : parseFloat((Math.random() * 0.8 + 0.3).toFixed(1));
-    
+
     const dx = (Math.random() - 0.5) * 0.2;
     const dy = (Math.random() - 0.5) * 0.2;
     const magnetism = 0.1 + Math.random() * 4;
@@ -299,13 +299,13 @@ export default function Particles({
       context.current.translate(translateX, translateY);
       context.current.beginPath();
       context.current.arc(x, y, size, 0, 2 * Math.PI);
-      
+
       // Theme-aware particle colors with fallback
       const isDark = theme === 'dark';
-      const particleColor = isDark 
-        ? `rgba(255, 255, 255, ${alpha})` 
+      const particleColor = isDark
+        ? `rgba(255, 255, 255, ${alpha})`
         : `rgba(51, 65, 85, ${alpha * 0.8})`; // slate-700 with better opacity for darker background
-      
+
       context.current.fillStyle = particleColor;
       context.current.fill();
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0);

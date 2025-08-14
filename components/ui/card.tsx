@@ -7,7 +7,7 @@ interface CardProps extends PropsWithChildren {
   className?: string;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className = "" }) => {
+export const Card: React.FC<CardProps> = ({ children, className = '' }) => {
   const mouseX = useSpring(0, { stiffness: 500, damping: 100 });
   const mouseY = useSpring(0, { stiffness: 500, damping: 100 });
 
