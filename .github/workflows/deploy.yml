@@ -11,7 +11,7 @@ env:
 
 jobs:
   deploy:
-    name: Deploy to Vercel
+    name: deploy-to-vercel
     runs-on: ubuntu-latest
 
     steps:
