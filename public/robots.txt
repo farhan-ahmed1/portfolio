@@ -4,7 +4,7 @@ Allow: /
 Disallow: /api/
 
 # Host
-Host: https://yourportfolio.com
+Host: http://localhost:3001
 
 # Sitemaps
-Sitemap: https://yourportfolio.com/sitemap.xml
+Sitemap: http://localhost:3001/sitemap.xml

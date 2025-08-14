@@ -1,0 +1,67 @@
+[
+  {
+    "title": "AI-Powered Analytics Dashboard",
+    "slug": "analytics-dashboard",
+    "summary": "An intelligent analytics dashboard that uses machine learning to provide actionable insights from complex data sets.",
+    "date": "2024-02-20T00:00:00.000Z",
+    "tech": [
+      "React",
+      "Python",
+      "FastAPI",
+      "TensorFlow",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "role": "Full-Stack Developer & ML Engineer",
+    "links": {
+      "github": "https://github.com/yourusername/analytics-dashboard",
+      "live": "https://analytics-demo.vercel.app"
+    },
+    "coverImage": "/images/projects/analytics-cover.jpg",
+    "gallery": [
+      "/images/projects/analytics-1.jpg",
+      "/images/projects/analytics-2.jpg"
+    ],
+    "impact": [
+      "40% faster data processing",
+      "95% prediction accuracy",
+      "500GB+ data analyzed"
+    ],
+    "featured": true,
+    "content": "const{Fragment:n,jsx:i,jsxs:e}=arguments[0];function _createMdxContent(r){const t={h1:\"h1\",h2:\"h2\",h3:\"h3\",li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",ul:\"ul\",...r.components};return e(n,{children:[i(t.h1,{children:\"AI-Powered Analytics Dashboard\"}),\"\\n\",i(t.p,{children:\"A sophisticated analytics platform that combines traditional data visualization with machine learning capabilities to deliver predictive insights.\"}),\"\\n\",i(t.h2,{children:\"Project Overview\"}),\"\\n\",i(t.p,{children:\"This dashboard transforms raw business data into actionable insights using advanced machine learning algorithms and intuitive visualizations.\"}),\"\\n\",i(t.h2,{children:\"Key Features\"}),\"\\n\",e(t.ul,{children:[\"\\n\",e(t.li,{children:[i(t.strong,{children:\"Predictive Analytics\"}),\": ML models for forecasting trends\"]}),\"\\n\",e(t.li,{children:[i(t.strong,{children:\"Real-time Processing\"}),\": Live data streaming and analysis\"]}),\"\\n\",e(t.li,{children:[i(t.strong,{children:\"Interactive Visualizations\"}),\": Dynamic charts and graphs\"]}),\"\\n\",e(t.li,{children:[i(t.strong,{children:\"Custom Reporting\"}),\": Automated report generation\"]}),\"\\n\",e(t.li,{children:[i(t.strong,{children:\"Multi-tenant Architecture\"}),\": Support for multiple organizations\"]}),\"\\n\"]}),\"\\n\",i(t.h2,{children:\"Technology Stack\"}),\"\\n\",i(t.h3,{children:\"Frontend\"}),\"\\n\",e(t.ul,{children:[\"\\n\",i(t.li,{children:\"React with TypeScript for the user interface\"}),\"\\n\",i(t.li,{children:\"D3.js for custom data visualizations\"}),\"\\n\",i(t.li,{children:\"Material-UI for component library\"}),\"\\n\"]}),\"\\n\",i(t.h3,{children:\"Backend & ML\"}),\"\\n\",e(t.ul,{children:[\"\\n\",i(t.li,{children:\"FastAPI for high-performance REST API\"}),\"\\n\",i(t.li,{children:\"TensorFlow for machine learning models\"}),\"\\n\",i(t.li,{children:\"Pandas and NumPy for data processing\"}),\"\\n\",i(t.li,{children:\"PostgreSQL for data storage\"}),\"\\n\"]}),\"\\n\",i(t.h3,{children:\"Infrastructure\"}),\"\\n\",e(t.ul,{children:[\"\\n\",i(t.li,{children:\"Docker containerization\"}),\"\\n\",i(t.li,{children:\"Redis for caching\"}),\"\\n\",i(t.li,{children:\"Nginx for load balancing\"}),\"\\n\"]}),\"\\n\",i(t.h2,{children:\"Machine Learning Implementation\"}),\"\\n\",i(t.p,{children:\"The platform includes several ML models:\"}),\"\\n\",e(t.ol,{children:[\"\\n\",e(t.li,{children:[i(t.strong,{children:\"Time Series Forecasting\"}),\": LSTM networks for trend prediction\"]}),\"\\n\",e(t.li,{children:[i(t.strong,{children:\"Anomaly Detection\"}),\": Isolation Forest for outlier identification\"]}),\"\\n\",e(t.li,{children:[i(t.strong,{children:\"Classification Models\"}),\": Random Forest for data categorization\"]}),\"\\n\"]}),\"\\n\",i(t.h2,{children:\"Impact\"}),\"\\n\",i(t.p,{children:\"This solution has significantly improved decision-making processes for clients, providing them with predictive capabilities that were previously unavailable.\"})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?i(e,{...n,children:i(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "url": "/projects/analytics-dashboard"
+  },
+  {
+    "title": "E-Commerce Platform",
+    "slug": "ecommerce-platform",
+    "summary": "A full-stack e-commerce platform built with Next.js, featuring real-time inventory management and secure payments.",
+    "date": "2024-01-15T00:00:00.000Z",
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Stripe",
+      "Tailwind CSS"
+    ],
+    "role": "Full-Stack Developer",
+    "links": {
+      "github": "https://github.com/yourusername/ecommerce-platform",
+      "live": "https://ecommerce-demo.vercel.app"
+    },
+    "coverImage": "/images/projects/ecommerce-cover.jpg",
+    "gallery": [
+      "/images/projects/ecommerce-1.jpg",
+      "/images/projects/ecommerce-2.jpg",
+      "/images/projects/ecommerce-3.jpg"
+    ],
+    "impact": [
+      "50% increase in conversion rate",
+      "200+ products managed",
+      "1000+ users served"
+    ],
+    "featured": true,
+    "content": "const{Fragment:e,jsx:n,jsxs:i}=arguments[0];function _createMdxContent(r){const t={h1:\"h1\",h2:\"h2\",h3:\"h3\",li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",ul:\"ul\",...r.components};return i(e,{children:[n(t.h1,{children:\"E-Commerce Platform\"}),\"\\n\",n(t.p,{children:\"A modern, full-stack e-commerce solution designed to provide seamless shopping experiences while maintaining robust backend functionality.\"}),\"\\n\",n(t.h2,{children:\"Overview\"}),\"\\n\",n(t.p,{children:\"This project showcases a complete e-commerce ecosystem built with modern web technologies. The platform handles everything from product catalog management to secure payment processing.\"}),\"\\n\",n(t.h2,{children:\"Key Features\"}),\"\\n\",i(t.ul,{children:[\"\\n\",i(t.li,{children:[n(t.strong,{children:\"Product Management\"}),\": Dynamic inventory with real-time updates\"]}),\"\\n\",i(t.li,{children:[n(t.strong,{children:\"User Authentication\"}),\": Secure login and registration system\"]}),\"\\n\",i(t.li,{children:[n(t.strong,{children:\"Shopping Cart\"}),\": Persistent cart with local storage fallback\"]}),\"\\n\",i(t.li,{children:[n(t.strong,{children:\"Payment Integration\"}),\": Stripe-powered secure checkout\"]}),\"\\n\",i(t.li,{children:[n(t.strong,{children:\"Admin Dashboard\"}),\": Comprehensive management interface\"]}),\"\\n\",i(t.li,{children:[n(t.strong,{children:\"Responsive Design\"}),\": Mobile-first responsive layout\"]}),\"\\n\"]}),\"\\n\",n(t.h2,{children:\"Technical Implementation\"}),\"\\n\",n(t.h3,{children:\"Frontend Architecture\"}),\"\\n\",i(t.ul,{children:[\"\\n\",n(t.li,{children:\"Built with Next.js 14 using the App Router\"}),\"\\n\",n(t.li,{children:\"TypeScript for type safety\"}),\"\\n\",n(t.li,{children:\"Tailwind CSS for styling\"}),\"\\n\",n(t.li,{children:\"Framer Motion for animations\"}),\"\\n\"]}),\"\\n\",n(t.h3,{children:\"Backend Systems\"}),\"\\n\",i(t.ul,{children:[\"\\n\",n(t.li,{children:\"Prisma ORM with PostgreSQL database\"}),\"\\n\",n(t.li,{children:\"NextAuth.js for authentication\"}),\"\\n\",n(t.li,{children:\"Stripe API for payment processing\"}),\"\\n\",n(t.li,{children:\"Cloudinary for image management\"}),\"\\n\"]}),\"\\n\",n(t.h3,{children:\"Performance Optimizations\"}),\"\\n\",i(t.ul,{children:[\"\\n\",n(t.li,{children:\"Server-side rendering for SEO\"}),\"\\n\",n(t.li,{children:\"Image optimization with Next.js Image component\"}),\"\\n\",n(t.li,{children:\"Database query optimization\"}),\"\\n\",n(t.li,{children:\"Caching strategies for product data\"}),\"\\n\"]}),\"\\n\",n(t.h2,{children:\"Challenges Solved\"}),\"\\n\",i(t.ol,{children:[\"\\n\",i(t.li,{children:[n(t.strong,{children:\"Real-time Inventory\"}),\": Implemented WebSocket connections for live stock updates\"]}),\"\\n\",i(t.li,{children:[n(t.strong,{children:\"Payment Security\"}),\": Integrated Stripe with proper webhook handling\"]}),\"\\n\",i(t.li,{children:[n(t.strong,{children:\"Performance\"}),\": Optimized database queries and implemented caching\"]}),\"\\n\",i(t.li,{children:[n(t.strong,{children:\"User Experience\"}),\": Created intuitive navigation and smooth interactions\"]}),\"\\n\"]}),\"\\n\",n(t.h2,{children:\"Results\"}),\"\\n\",n(t.p,{children:\"The platform successfully handles high traffic volumes while maintaining excellent performance metrics. User feedback has been overwhelmingly positive, with particular praise for the intuitive interface and fast checkout process.\"})]})}return{default:function(e={}){const{wrapper:i}=e.components||{};return i?n(i,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};",
+    "url": "/projects/ecommerce-platform"
+  }
+]

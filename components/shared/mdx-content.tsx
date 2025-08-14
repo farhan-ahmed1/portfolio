@@ -1,7 +1,7 @@
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import * as React from 'react';
 
 interface MDXContentProps {
-  code: string;
+  content: string;
 }
 
 // Custom MDX components for enhanced content rendering
@@ -88,12 +88,11 @@ const mdxComponents = {
   ),
 };
 
-export function MDXContent({ code }: MDXContentProps) {
-  const Component = useMDXComponent(code);
-  
+export function MDXContent({ content }: MDXContentProps) {
   return (
-    <div className="prose prose-lg max-w-none dark:prose-invert">
-      <Component components={mdxComponents} />
-    </div>
+    <div 
+      className="prose prose-lg max-w-none dark:prose-invert"
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
   );
 }

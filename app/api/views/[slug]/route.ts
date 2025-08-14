@@ -3,13 +3,13 @@ import { prisma } from '@/lib/prisma';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = params;
+    const { slug } = await params;
     
     // Simple rate limiting - could be enhanced with Redis or other solutions
-    const userIP = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
+    const userIP = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
     
     // Upsert the metric record
     const metric = await prisma.metric.upsert({
@@ -30,10 +30,10 @@ export async function POST(
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = params;
+    const { slug } = await params;
     
     const metric = await prisma.metric.findUnique({
       where: { slug },

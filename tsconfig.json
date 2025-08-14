@@ -25,7 +25,7 @@
       "@/lib/*": ["./lib/*"],
       "@/app/*": ["./app/*"],
       "@/content/*": ["./content/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "#site/content": ["./.velite"]
     }
   },
   "include": [
@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated"
+    ".velite"
   ],
   "exclude": ["node_modules"]
 }

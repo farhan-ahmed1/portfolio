@@ -5,13 +5,14 @@ import { ProjectHeader } from '@/components/projects/project-header';
 import { ProjectMetrics } from '@/components/projects/project-metrics';
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {
-  const project = await getProjectBySlug(params.slug);
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
   
   if (!project) {
     return {
@@ -31,7 +32,8 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const project = await getProjectBySlug(params.slug);
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();
@@ -43,7 +45,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <ProjectMetrics slug={project.slug} />
       
       <div className="prose prose-lg mx-auto">
-        <MDXContent code={project.body.code} />
+        <MDXContent content={project.content} />
       </div>
     </article>
   );
