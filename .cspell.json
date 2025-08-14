@@ -1,0 +1,72 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "Farhan",
+    "Ahmed",
+    "nextjs",
+    "tailwindcss",
+    "typescript",
+    "vercel",
+    "prisma",
+    "contentlayer",
+    "framer",
+    "lucide",
+    "radix",
+    "shadcn",
+    "rehype",
+    "remark",
+    "autolink",
+    "headings",
+    "gfm",
+    "resend",
+    "zod",
+    "clsx",
+    "cva",
+    "cmdk",
+    "vaul",
+    "sonner",
+    "postcss",
+    "autoprefixer",
+    "eslint",
+    "prettier",
+    "playwright",
+    "vitest",
+    "WCAG",
+    "cuid",
+    "ehthumbs",
+    "pids",
+    "jspm"
+  ],
+  "flagWords": [],
+  "ignorePaths": [
+    "node_modules/**",
+    ".next/**",
+    ".contentlayer/**",
+    "dist/**",
+    "build/**",
+    "*.min.js",
+    "*.map"
+  ],
+  "import": [],
+  "overrides": [
+    {
+      "filename": "**/*.{ts,tsx,js,jsx}",
+      "languageSettings": [
+        {
+          "languageId": "typescript",
+          "caseSensitive": true
+        }
+      ]
+    },
+    {
+      "filename": "**/*.{md,mdx}",
+      "languageSettings": [
+        {
+          "languageId": "markdown",
+          "caseSensitive": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --background: 210 16% 88%; /* Much darker background #DCE3E8 */
+    --foreground: 222 84% 4.9%; /* #0F172A */
+
+    --card: 210 20% 92%; /* Darker card background #E8EDF2 */
+    --card-foreground: 222 84% 4.9%; /* #0F172A */
+
+    --popover: 210 20% 92%;
+    --popover-foreground: 222 84% 4.9%;
+
+    --primary: 222 84% 4.9%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 20% 82%; /* Much darker secondary #CDD5DC */
+    --secondary-foreground: 222 84% 4.9%;
+
+    --muted: 210 20% 82%; /* Much darker muted #CDD5DC */
+    --muted-foreground: 215 18% 25%; /* Even darker for better contrast */
+
+    --accent: 158 64% 71%; /* #6EE7B7 - emerald accent */
+    --accent-foreground: 222 84% 4.9%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 20% 75%; /* Darker borders #BBC4CC */
+    --input: 210 20% 75%; /* Darker input backgrounds #BBC4CC */
+    --ring: 222 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 4%; /* #0B0F14 */
+    --foreground: 210 40% 89%; /* #E5E7EB */
+
+    --card: 222 84% 4.9%; /* #0F172A */
+    --card-foreground: 210 40% 89%;
+
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 89%;
+
+    --primary: 210 40% 89%;
+    --primary-foreground: 222 84% 4.9%;
+
+    --secondary: 217 33% 8%; /* #111827 */
+    --secondary-foreground: 210 40% 89%;
+
+    --muted: 217 33% 8%; /* #111827 */
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 158 64% 71%; /* #6EE7B7 - emerald accent */
+    --accent-foreground: 222 84% 4.9%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 89%;
+
+    --border: 217 33% 8%;
+    --input: 217 33% 8%;
+    --ring: 212 95% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Subtle texture for light theme */
+  body:not(.dark) {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(71, 85, 105, 0.25) 1px, transparent 0);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+  }
+}
+
+/* Custom focus styles for accessibility */
+@layer utilities {
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
