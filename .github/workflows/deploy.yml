@@ -1,18 +1,20 @@
 name: deploy
 
 on:
-  push:
+  pull_request:
     branches: [main]
-  workflow_dispatch:
+    types: [closed]
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  NODE_VERSION: '22.16.0'
 
 jobs:
   deploy:
-    name: deploy-to-vercel
+    name: deploy-to-production
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Checkout code
@@ -21,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.16.0'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
       - name: Install dependencies
