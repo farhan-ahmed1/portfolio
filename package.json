@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "velite dev & next dev",
-    "build": "velite && next build",
+    "build": "prisma generate && velite && next build",
     "start": "next start",
+    "postinstall": "prisma generate",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
