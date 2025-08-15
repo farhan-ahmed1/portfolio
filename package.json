@@ -16,7 +16,11 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
+    "db:seed": "tsx prisma/seed.ts",
     "postbuild": "next-sitemap"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.7.1",
@@ -64,6 +68,7 @@
     "prettier-plugin-tailwindcss": "^0.5.9",
     "prisma": "^5.7.1",
     "tailwindcss": "^3.3.0",
+    "tsx": "^4.20.4",
     "typescript": "^5",
     "vitest": "^3.2.4"
   },

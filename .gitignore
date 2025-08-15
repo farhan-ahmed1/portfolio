@@ -70,3 +70,4 @@ jspm_packages/
 
 # copilot
 .github/copilot/
+.env*.local
