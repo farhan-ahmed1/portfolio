@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm ci",
+  "git": {
+    "deploymentEnabled": {
+      "main": false,
+      "develop": false
+    }
+  },
+  "github": {
+    "autoDeployment": false,
+    "autoJobCancelation": true
+  }
+}
