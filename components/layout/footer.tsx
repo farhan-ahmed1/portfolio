@@ -5,7 +5,9 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-4">
           <div>
             <h3 className="text-lg font-semibold">Farhan Ahmed</h3>
-            <p className="mt-2 text-sm text-muted-foreground">trying my best to try-catch.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              trying my best to learn and grow as a person and developer.
+            </p>
           </div>
           <div>
             <h4 className="text-sm font-semibold">Navigation</h4>
@@ -28,25 +30,28 @@ export function Footer() {
             <h4 className="text-sm font-semibold">Social</h4>
             <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/farhan-ahmed1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   GitHub
                 </a>
               </li>
               <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.linkedin.com/in/farhan-m-ahmed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  Twitter
                 </a>
               </li>
             </ul>
           </div>
           <div>
             <h4 className="text-sm font-semibold">Contact</h4>
-            <p className="mt-2 text-sm text-muted-foreground">hello@example.com</p>
+            <p className="mt-2 text-sm text-muted-foreground">abdia8001@gmail.com</p>
           </div>
         </div>
         <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">

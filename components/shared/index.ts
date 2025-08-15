@@ -1,2 +1,2 @@
-export { ThemeToggle } from './theme-toggle';
 export { MDXContent } from './mdx-content';
+export { ThemeToggle } from './theme-toggle';

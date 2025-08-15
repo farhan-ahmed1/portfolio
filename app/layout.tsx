@@ -13,34 +13,56 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Your Name - Portfolio',
-    template: '%s | Your Name',
+    default: 'Farhan Ahmed - Portfolio',
+    template: '%s | Farhan Ahmed',
   },
-  description: 'Full-stack developer passionate about building exceptional digital experiences.',
-  keywords: ['developer', 'portfolio', 'full-stack', 'react', 'nextjs', 'typescript'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  description:
+    'Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance.',
+  keywords: [
+    'developer',
+    'portfolio',
+    'software engineer',
+    'computer science',
+    'react',
+    'nextjs',
+    'typescript',
+    'aws',
+    'python',
+  ],
+  authors: [{ name: 'Farhan Ahmed' }],
+  creator: 'Farhan Ahmed',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  icons: {
+    icon: [
+      { url: '/favicons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicons/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' },
+      { url: '/favicons/favicon-32x32.svg', sizes: '32x32', type: 'image/svg+xml' },
+    ],
+    apple: [{ url: '/favicons/apple-touch-icon.svg', type: 'image/svg+xml' }],
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    title: 'Your Name - Portfolio',
-    description: 'Full-stack developer passionate about building exceptional digital experiences.',
-    siteName: 'Your Name Portfolio',
+    title: 'Farhan Ahmed - Portfolio',
+    description:
+      'Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance.',
+    siteName: 'Farhan Ahmed Portfolio',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Your Name - Portfolio',
+        alt: 'Farhan Ahmed - Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Your Name - Portfolio',
-    description: 'Full-stack developer passionate about building exceptional digital experiences.',
+    title: 'Farhan Ahmed - Portfolio',
+    description:
+      'Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance.',
     images: ['/og-image.png'],
   },
   robots: {

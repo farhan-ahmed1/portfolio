@@ -18,57 +18,55 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     type: 'experience',
-    title: 'Senior Full Stack Developer',
-    company: 'TechCorp Solutions',
-    location: 'San Francisco, CA',
-    period: '2023 - Present',
+    title: 'Software Engineering Intern',
+    company: 'Principal Financial',
+    location: 'Des Moines, IA',
+    period: 'May 2024 - Aug 2024',
     description: [
-      'Lead development of enterprise web applications using Next.js and TypeScript',
-      'Architected microservices infrastructure supporting 100k+ daily users',
-      'Mentored junior developers and established coding standards',
+      'Improved website performance, as measured by 10% increase in cart starts, by enhancing usability with TypeScript and React',
+      'Contributed to sprint goals completing 15+ tickets by participating in Agile stand-ups and implementing user stories',
+      'Ensured code quality resulting in 0 critical issues by conducting comprehensive reviews and unit tests',
     ],
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS'],
-    link: 'https://techcorp.com',
+    technologies: ['TypeScript', 'Next.js', 'React', 'Git'],
   },
   {
     type: 'experience',
-    title: 'Full Stack Developer',
-    company: 'StartupXYZ',
-    location: 'Remote',
-    period: '2021 - 2023',
+    title: 'Information Technology Intern',
+    company: 'EMC Insurance',
+    location: 'Des Moines, IA',
+    period: 'Aug 2023 - May 2024',
     description: [
-      'Built responsive web applications from concept to deployment',
-      'Implemented real-time features using WebSocket and Socket.io',
-      'Optimized application performance resulting in 40% faster load times',
+      'Streamlined data flow, reducing processing time by 20%, by developing APIs in C#',
+      'Achieved 90% code coverage on 10 repositories by leading C# unit testing in .NET Core with Moq',
+      'Reduced operational costs by 15% by deploying AWS Lambda functions to replace traditional server-based processes',
     ],
-    technologies: ['React', 'Node.js', 'MongoDB', 'Docker'],
-    link: 'https://startupxyz.com',
+    technologies: ['C#', 'Bitbucket', '.NET Core', 'AWS Lambda'],
+  },
+  {
+    type: 'experience',
+    title: 'IT Support Specialist',
+    company: 'EMC Insurance',
+    location: 'Des Moines, IA',
+    period: 'Dec 2022 - Aug 2023',
+    description: [
+      'Resolved over 50 individual tickets, achieving 90% satisfaction rate by delivering accurate troubleshooting for software issues',
+      'Developed training workshops for over 30 high school students and staff on troubleshooting best practices, resulting in 30% reduction in support tickets',
+      'Created 5+ dynamic Power BI reports for the IT Support team, streamlining processes and supporting smarter decision-making',
+    ],
+    technologies: ['Active Directory', 'Jira', 'Power BI'],
   },
   {
     type: 'education',
     title: 'Bachelor of Science in Computer Science',
-    company: 'University of Technology',
-    location: 'Boston, MA',
-    period: '2017 - 2021',
+    company: 'Iowa State University',
+    location: 'Ames, IA',
+    period: 'Aug 2022 - May 2026',
     description: [
-      'Graduated Magna Cum Laude with GPA 3.8/4.0',
-      'Specialized in Software Engineering and Database Systems',
-      'Active member of Computer Science Society',
+      'Currently pursuing Computer Science degree with focus on software engineering',
+      'Relevant Courses: Data Structures and Algorithms, Object-Oriented Programming',
+      'Active in software development projects and internship programs',
     ],
-    technologies: ['Java', 'Python', 'SQL', 'Algorithms'],
-  },
-  {
-    type: 'education',
-    title: 'Full Stack Web Development Bootcamp',
-    company: 'CodeAcademy Pro',
-    location: 'Online',
-    period: '2020',
-    description: [
-      'Intensive 6-month program covering modern web development',
-      'Built 5+ full-stack projects with modern frameworks',
-      'Completed with distinction in top 10% of cohort',
-    ],
-    technologies: ['HTML/CSS', 'JavaScript', 'React', 'Express.js'],
+    technologies: ['Java', 'Python', 'Data Structures', 'Algorithms'],
   },
 ];
 
@@ -102,7 +100,7 @@ export function Timeline() {
               <div
                 className={`absolute left-6 top-6 h-4 w-4 rounded-full border-4 ${
                   item.type === 'experience'
-                    ? 'border-emerald-200 bg-emerald-500 dark:border-emerald-800'
+                    ? 'border-blue-200 bg-blue-500 dark:border-emerald-800 dark:bg-emerald-500'
                     : 'border-blue-200 bg-blue-500 dark:border-blue-800'
                 }`}
               />
@@ -126,7 +124,7 @@ export function Timeline() {
                           </a>
                         )}
                       </div>
-                      <p className="mb-2 font-medium text-emerald-600 dark:text-emerald-400">
+                      <p className="mb-2 font-medium text-blue-600 dark:text-emerald-400">
                         {item.company}
                       </p>
                       <div className="mb-4 flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
@@ -143,7 +141,7 @@ export function Timeline() {
                     <span
                       className={`rounded-full px-2 py-1 text-xs ${
                         item.type === 'experience'
-                          ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200'
+                          ? 'bg-blue-100 text-blue-800 dark:bg-emerald-900 dark:text-emerald-200'
                           : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
                       }`}
                     >
@@ -168,7 +166,7 @@ export function Timeline() {
                       {item.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                          className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 dark:bg-emerald-900 dark:text-emerald-200"
                         >
                           {tech}
                         </span>

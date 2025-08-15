@@ -37,7 +37,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
       <div className="container py-12 pt-24">
         <div className="mx-auto max-w-4xl">
           <motion.div
@@ -64,42 +64,42 @@ export default function ContactPage() {
 
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-emerald-100 p-3 dark:bg-emerald-900">
-                    <Mail className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                  <div className="rounded-full bg-blue-100 p-3 dark:bg-emerald-900">
+                    <Mail className="h-5 w-5 text-blue-600 dark:text-emerald-400" />
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
                     <a
-                      href="mailto:farhan@example.com"
-                      className="text-muted-foreground transition-colors hover:text-emerald-600"
+                      href="mailto:abdia8001@gmail.com"
+                      className="text-muted-foreground transition-colors hover:text-blue-600 dark:hover:text-emerald-600"
                     >
-                      farhan@example.com
+                      abdia8001@gmail.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-emerald-100 p-3 dark:bg-emerald-900">
-                    <Phone className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                  <div className="rounded-full bg-blue-100 p-3 dark:bg-emerald-900">
+                    <Phone className="h-5 w-5 text-blue-600 dark:text-emerald-400" />
                   </div>
                   <div>
                     <p className="font-medium">Phone</p>
                     <a
-                      href="tel:+1234567890"
-                      className="text-muted-foreground transition-colors hover:text-emerald-600"
+                      href="tel:+15158509023"
+                      className="text-muted-foreground transition-colors hover:text-blue-600 dark:hover:text-emerald-600"
                     >
-                      +1 (234) 567-8900
+                      (515) 850-9023
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="rounded-full bg-emerald-100 p-3 dark:bg-emerald-900">
-                    <MapPin className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                  <div className="rounded-full bg-blue-100 p-3 dark:bg-emerald-900">
+                    <MapPin className="h-5 w-5 text-blue-600 dark:text-emerald-400" />
                   </div>
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
+                    <p className="text-muted-foreground">Des Moines, IA</p>
                   </div>
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-600 disabled:pointer-events-none disabled:opacity-50"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-600 disabled:pointer-events-none disabled:opacity-50 dark:bg-emerald-500 dark:hover:bg-emerald-600"
                   >
                     {isSubmitting ? (
                       <>

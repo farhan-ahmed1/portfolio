@@ -5,61 +5,65 @@ import { Card } from '@/components/ui/card';
 import { Download, ExternalLink, Calendar, MapPin } from 'lucide-react';
 
 const skills = {
-  Frontend: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Redux'],
-  Backend: ['Node.js', 'Python', 'PostgreSQL', 'Prisma', 'Express.js', 'FastAPI'],
-  'Cloud & DevOps': ['Vercel', 'AWS', 'Docker', 'GitHub Actions', 'Netlify'],
-  Tools: ['Git', 'VS Code', 'Figma', 'Postman', 'Jira', 'Slack'],
+  Languages: ['Python', 'Java', 'JavaScript', 'TypeScript', 'HTML/CSS', 'C#'],
+  Frameworks: ['React', 'Next.js', '.NET Core'],
+  Database: ['PostgreSQL', 'MySQL'],
+  Certifications: ['AWS Cloud Practitioner'],
+  'Developer Tools': ['AWS', 'Git', 'GitHub', 'VS Code', 'Eclipse', 'CI/CD', 'TDD'],
 };
 
 const experience = [
   {
-    title: 'Senior Full Stack Developer',
-    company: 'TechCorp Solutions',
-    location: 'San Francisco, CA',
-    period: '2023 - Present',
+    title: 'Software Engineering Intern',
+    company: 'Principal Financial',
+    location: 'Des Moines, IA',
+    period: 'May 2024 - Aug 2024',
     description: [
-      'Lead development of enterprise web applications using Next.js and TypeScript',
-      'Architected microservices infrastructure supporting 100k+ daily users',
-      'Mentored junior developers and established coding standards',
-      'Improved application performance by 40% through optimization techniques',
+      'Improved website performance, as measured by 10% increase in cart starts, by enhancing usability with TypeScript and React',
+      'Contributed to sprint goals completing 15+ tickets by participating in Agile stand-ups and implementing user stories',
+      'Ensured code quality resulting in 0 critical issues by conducting comprehensive reviews and unit tests',
     ],
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'AWS'],
+    technologies: ['TypeScript', 'Next.js', 'React', 'Git'],
   },
   {
-    title: 'Full Stack Developer',
-    company: 'StartupXYZ',
-    location: 'Remote',
-    period: '2021 - 2023',
+    title: 'Information Technology Intern',
+    company: 'EMC Insurance',
+    location: 'Des Moines, IA',
+    period: 'Aug 2023 - May 2024',
     description: [
-      'Built responsive web applications from concept to deployment',
-      'Implemented real-time features using WebSocket and Socket.io',
-      'Collaborated with design team to create user-friendly interfaces',
-      'Maintained 99.9% uptime for critical business applications',
+      'Streamlined data flow, reducing processing time by 20%, by developing APIs in C#',
+      'Achieved 90% code coverage on 10 repositories by leading C# unit testing in .NET Core with Moq',
+      'Reduced operational costs by 15% by deploying AWS Lambda functions to replace traditional server-based processes',
     ],
-    technologies: ['React', 'Node.js', 'MongoDB', 'Docker'],
+    technologies: ['C#', 'Bitbucket', '.NET Core', 'AWS Lambda'],
+  },
+  {
+    title: 'IT Support Specialist',
+    company: 'EMC Insurance',
+    location: 'Des Moines, IA',
+    period: 'Dec 2022 - Aug 2023',
+    description: [
+      'Resolved over 50 individual tickets, achieving 90% satisfaction rate by delivering accurate troubleshooting for software issues',
+      'Developed training workshops for over 30 high school students and staff on troubleshooting best practices, resulting in 30% reduction in support tickets',
+      'Created 5+ dynamic Power BI reports for the IT Support team, streamlining processes and supporting smarter decision-making',
+    ],
+    technologies: ['Active Directory', 'Jira', 'Power BI'],
   },
 ];
 
 const education = [
   {
     title: 'Bachelor of Science in Computer Science',
-    institution: 'University of Technology',
-    location: 'Boston, MA',
-    period: '2017 - 2021',
-    details: 'Graduated Magna Cum Laude with GPA 3.8/4.0',
-  },
-  {
-    title: 'Full Stack Web Development Bootcamp',
-    institution: 'CodeAcademy Pro',
-    location: 'Online',
-    period: '2020',
-    details: 'Completed with distinction in top 10% of cohort',
+    institution: 'Iowa State University',
+    location: 'Ames, IA',
+    period: 'Aug 2022 - May 2026',
+    details: 'Relevant Courses: Data Structures and Algorithms, Object-Oriented Programming',
   },
 ];
 
 export default function ResumePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
       <div className="container py-12 pt-24">
         <div className="mx-auto max-w-4xl">
           <motion.div
@@ -70,16 +74,21 @@ export default function ResumePage() {
           >
             <h1 className="mb-4 text-4xl font-bold tracking-tight">Resume</h1>
             <p className="mb-8 text-lg text-muted-foreground">
-              Full-stack developer with 3+ years of experience building scalable web applications
+              Computer Science Student at Iowa State University with software engineering experience
+              at Principal Financial and EMC Insurance
             </p>
 
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <button className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-600">
+              <a
+                href="/documents/Farhan_Ahmed_Resume.pdf"
+                download="Farhan_Ahmed_Resume.pdf"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-600 dark:bg-emerald-500 dark:hover:bg-emerald-600"
+              >
                 <Download className="h-4 w-4" />
                 Download PDF
-              </button>
+              </a>
               <a
-                href="https://linkedin.com/in/farhan-ahmed"
+                href="https://www.linkedin.com/in/farhan-m-ahmed"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-6 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
@@ -98,24 +107,50 @@ export default function ResumePage() {
             className="mb-12"
           >
             <h2 className="mb-6 text-2xl font-semibold">Technical Skills</h2>
-            <div className="grid gap-6 md:grid-cols-2">
-              {Object.entries(skills).map(([category, skillList], index) => (
-                <Card key={category} className="p-6">
-                  <h3 className="mb-4 font-semibold text-emerald-600 dark:text-emerald-400">
-                    {category}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skillList.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </Card>
-              ))}
+            <div className="space-y-6">
+              {/* First 4 categories in 2x2 grid */}
+              <div className="grid gap-6 md:grid-cols-2">
+                {Object.entries(skills)
+                  .slice(0, 4)
+                  .map(([category, skillList], index) => (
+                    <Card key={category} className="p-6">
+                      <h3 className="mb-4 font-semibold text-blue-600 dark:text-emerald-400">
+                        {category}
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {skillList.map((skill) => (
+                          <span
+                            key={skill}
+                            className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </Card>
+                  ))}
+              </div>
+
+              {/* Developer Tools - Full width */}
+              {Object.entries(skills)
+                .slice(4)
+                .map(([category, skillList]) => (
+                  <Card key={category} className="p-6">
+                    <h3 className="mb-4 font-semibold text-blue-600 dark:text-emerald-400">
+                      {category}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {skillList.map((skill) => (
+                        <span
+                          key={skill}
+                          className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </Card>
+                ))}
             </div>
           </motion.section>
 
@@ -135,7 +170,7 @@ export default function ResumePage() {
                       <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
                         {job.title}
                       </h3>
-                      <p className="font-medium text-emerald-600 dark:text-emerald-400">
+                      <p className="font-medium text-blue-600 dark:text-emerald-400">
                         {job.company}
                       </p>
                       <div className="mt-1 flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
@@ -167,7 +202,7 @@ export default function ResumePage() {
                     {job.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200"
+                        className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 dark:bg-emerald-900 dark:text-emerald-200"
                       >
                         {tech}
                       </span>
@@ -194,7 +229,7 @@ export default function ResumePage() {
                       <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
                         {edu.title}
                       </h3>
-                      <p className="font-medium text-blue-600 dark:text-blue-400">
+                      <p className="font-medium text-blue-600 dark:text-emerald-400">
                         {edu.institution}
                       </p>
                       <div className="mt-1 flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
@@ -231,7 +266,7 @@ export default function ResumePage() {
               </p>
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-600"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-600 dark:bg-emerald-500 dark:hover:bg-emerald-600"
               >
                 Get In Touch
                 <ExternalLink className="h-4 w-4" />

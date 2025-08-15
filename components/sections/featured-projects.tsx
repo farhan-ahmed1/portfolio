@@ -3,38 +3,41 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
-import { ArrowUpRight, ExternalLink, Github } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Github, Eye, Heart } from 'lucide-react';
 
 const featuredProjects = [
   {
-    title: 'E-commerce Platform',
-    description: 'Full-stack e-commerce solution with Next.js, Stripe, and Prisma',
-    tech: ['Next.js', 'TypeScript', 'Prisma', 'Stripe'],
-    href: '/projects/ecommerce-platform',
-    github: 'https://github.com/username/ecommerce',
-    live: 'https://ecommerce-demo.vercel.app',
-    views: 1234,
-    likes: 89,
+    title: 'iOS Text-to-Speech App',
+    description:
+      'A powerful mobile app that converts webpage content into high-quality speech using Python backend and Swift frontend',
+    tech: ['Python', 'Swift', 'iOS', 'Web Scraping'],
+    href: '/projects/ios-text-to-speech',
+    github: 'https://github.com/farhan-ahmed1/ios-text-to-speech',
+    live: null as string | null, // Mobile app, no live demo
+    views: 425,
+    likes: 32,
   },
   {
-    title: 'Task Management App',
-    description: 'Collaborative task management with real-time updates',
-    tech: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-    href: '/projects/task-management',
-    github: 'https://github.com/username/task-app',
-    live: 'https://tasks-demo.vercel.app',
-    views: 856,
-    likes: 67,
+    title: 'AWS Cloud Infrastructure',
+    description:
+      'Enterprise-level cloud deployment with automated CI/CD pipeline, Windows Authentication, and real-time data sync',
+    tech: ['AWS', 'SQL', 'Bitbucket', 'Bamboo', 'PowerShell'],
+    href: '/projects/aws-cloud-infrastructure',
+    github: 'https://github.com/farhan-ahmed1/aws-infrastructure-project',
+    live: null as string | null, // Enterprise project, no public demo
+    views: 312,
+    likes: 28,
   },
   {
-    title: 'Analytics Dashboard',
-    description: 'Data visualization dashboard with interactive charts',
-    tech: ['Next.js', 'D3.js', 'PostgreSQL', 'Tailwind'],
-    href: '/projects/analytics-dashboard',
-    github: 'https://github.com/username/analytics',
-    live: 'https://analytics-demo.vercel.app',
-    views: 642,
-    likes: 45,
+    title: 'Personal Portfolio Website',
+    description:
+      'Modern, responsive portfolio built with Next.js App Router, featuring dark mode, animations, and optimized performance',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
+    href: '/projects/portfolio-website',
+    github: 'https://github.com/farhan-ahmed1/portfolio',
+    live: 'https://farhan-ahmed.vercel.app' as string | null, // Live portfolio
+    views: 189,
+    likes: 15,
   },
 ];
 
@@ -44,7 +47,8 @@ export function FeaturedProjects() {
       <div className="mb-8">
         <h2 className="mb-4 text-2xl font-semibold">Featured Projects</h2>
         <p className="text-muted-foreground">
-          Highlighted work showcasing technical expertise and problem-solving capabilities.
+          Showcase of diverse technical projects spanning mobile development, cloud infrastructure,
+          and modern web applications.
         </p>
       </div>
 
@@ -57,7 +61,7 @@ export function FeaturedProjects() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <Card className="group h-full">
-              <div className="p-6">
+              <div className="flex h-full flex-col p-6">
                 <div className="mb-4 flex items-start justify-between">
                   <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
                     {project.title}
@@ -71,22 +75,24 @@ export function FeaturedProjects() {
                     >
                       <Github className="h-4 w-4" />
                     </Link>
-                    <Link
-                      href={project.live}
-                      className="opacity-60 transition-opacity hover:opacity-100"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                    </Link>
+                    {project.live && (
+                      <Link
+                        href={project.live}
+                        className="opacity-60 transition-opacity hover:opacity-100"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </Link>
+                    )}
                   </div>
                 </div>
 
-                <p className="mb-4 text-sm text-slate-600 dark:text-slate-400">
+                <p className="mb-6 text-sm text-slate-600 dark:text-slate-400">
                   {project.description}
                 </p>
 
-                <div className="mb-4 flex flex-wrap gap-2">
+                <div className="mb-6 flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
@@ -97,18 +103,29 @@ export function FeaturedProjects() {
                   ))}
                 </div>
 
-                <div className="mb-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                  <span>{project.views.toLocaleString()} views</span>
-                  <span>{project.likes} likes</span>
-                </div>
+                {/* Spacer to push content to bottom */}
+                <div className="flex-grow" />
 
-                <Link
-                  href={project.href}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 transition-colors hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
-                >
-                  View Project
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={project.href}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+                  >
+                    View Project
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+
+                  <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="flex items-center gap-1">
+                      <Eye className="h-3 w-3" />
+                      <span>{project.views.toLocaleString()}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Heart className="h-3 w-3" />
+                      <span>{project.likes}</span>
+                    </div>
+                  </div>
+                </div>
 
                 <Link
                   href={project.href}

@@ -13,13 +13,14 @@ export default async function ProjectsPage() {
   const projects = await getAllProjects();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
       <div className="container py-12 pt-24">
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-4xl font-bold tracking-tight">Projects</h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            A showcase of my work across various technologies and domains. Each project represents a
-            unique challenge and solution.
+            A showcase of my software engineering projects, from mobile applications to cloud
+            infrastructure solutions. Each project demonstrates problem-solving skills and technical
+            expertise.
           </p>
         </div>
 

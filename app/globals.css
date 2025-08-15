@@ -8,33 +8,33 @@
   }
 
   :root {
-    --background: 210 16% 88%; /* Much darker background #DCE3E8 */
-    --foreground: 222 84% 4.9%; /* #0F172A */
+    --background: 217 20% 95%; /* Subtle blue-grey #F0F2F5 */
+    --foreground: 215 25% 15%; /* Rich charcoal #242932 */
 
-    --card: 210 20% 92%; /* Darker card background #E8EDF2 */
-    --card-foreground: 222 84% 4.9%; /* #0F172A */
+    --card: 220 14% 98%; /* Very light blue-white #FBFCFD */
+    --card-foreground: 215 25% 15%; /* Rich charcoal #242932 */
 
-    --popover: 210 20% 92%;
-    --popover-foreground: 222 84% 4.9%;
+    --popover: 220 14% 98%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222 84% 4.9%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 215 25% 15%;
+    --primary-foreground: 220 14% 98%;
 
-    --secondary: 210 20% 82%; /* Much darker secondary #CDD5DC */
-    --secondary-foreground: 222 84% 4.9%;
+    --secondary: 217 20% 90%; /* Light blue-grey #E3E7ED */
+    --secondary-foreground: 215 20% 25%; /* Darker charcoal */
 
-    --muted: 210 20% 82%; /* Much darker muted #CDD5DC */
-    --muted-foreground: 215 18% 25%; /* Even darker for better contrast */
+    --muted: 217 18% 87%; /* Muted blue-grey background #D8DEE6 */
+    --muted-foreground: 215 15% 40%; /* Subtle text #5A6169 */
 
-    --accent: 158 64% 71%; /* #6EE7B7 - emerald accent */
-    --accent-foreground: 222 84% 4.9%;
+    --accent: 213 94% 68%; /* Elegant blue #60A5FA */
+    --accent-foreground: 220 14% 98%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 220 14% 98%;
 
-    --border: 210 20% 75%; /* Darker borders #BBC4CC */
-    --input: 210 20% 75%; /* Darker input backgrounds #BBC4CC */
-    --ring: 222 84% 4.9%;
+    --border: 217 16% 84%; /* Blue-grey borders #CDD4DD */
+    --input: 217 20% 90%; /* Light blue-grey input backgrounds #E3E7ED */
+    --ring: 213 94% 68%; /* Blue focus ring */
 
     --radius: 0.5rem;
   }
@@ -58,7 +58,7 @@
     --muted: 217 33% 8%; /* #111827 */
     --muted-foreground: 215 20% 65%;
 
-    --accent: 158 64% 71%; /* #6EE7B7 - emerald accent */
+    --accent: 158 64% 71%; /* Emerald green #6EE7B7 */
     --accent-foreground: 222 84% 4.9%;
 
     --destructive: 0 63% 31%;
@@ -66,7 +66,7 @@
 
     --border: 217 33% 8%;
     --input: 217 33% 8%;
-    --ring: 212 95% 68%;
+    --ring: 158 64% 71%; /* Emerald green focus ring for dark theme */
   }
 }
 
@@ -78,14 +78,14 @@
     @apply bg-background text-foreground;
   }
 
-  /* Subtle texture for light theme */
+  /* Subtle blue texture for light theme - creates depth and contrast */
   body:not(.dark) {
-    background-image: radial-gradient(
-      circle at 1px 1px,
-      rgba(71, 85, 105, 0.25) 1px,
-      transparent 0
-    );
-    background-size: 24px 24px;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.08) 1px, transparent 0),
+      linear-gradient(180deg, rgba(96, 165, 250, 0.02) 0%, rgba(59, 130, 246, 0.04) 100%);
+    background-size:
+      36px 36px,
+      100% 100%;
     background-attachment: fixed;
   }
 }

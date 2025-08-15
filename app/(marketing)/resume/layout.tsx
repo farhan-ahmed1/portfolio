@@ -4,3 +4,7 @@ export const metadata: Metadata = {
   title: 'Resume',
   description: 'Download my resume or view my professional experience and skills.',
 };
+
+export default function ResumeLayout({ children }: { children: React.ReactNode }) {
+  return children;
+}

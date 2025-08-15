@@ -21,7 +21,7 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-300/60 via-slate-200/70 to-slate-300/50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
       {/* Particles Background */}
       <div className="absolute inset-0 z-0">
         <Particles
@@ -55,8 +55,8 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400 sm:text-xl"
           >
-            I love solving problems with code, creating problems with code, and then solving those
-            problems with code until... I don&apos;t ¯\_(ツ)_/¯
+            welcome fellow stranger. i see you have laid your eyes upon my humble abode. see for
+            yourself what i have to offer.
           </motion.p>
 
           {/* Navigation Links */}
@@ -144,7 +144,7 @@ export default function HomePage() {
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-emerald-600"
+                className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-600 dark:bg-emerald-500 dark:hover:bg-emerald-600"
               >
                 Get in touch
                 <ArrowUpRight className="h-4 w-4" />

@@ -1,0 +1,33 @@
+{
+  "name": "Farhan Ahmed - Portfolio",
+  "short_name": "Farhan Ahmed",
+  "description": "Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance.",
+  "icons": [
+    {
+      "src": "/favicons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicons/favicon-16x16.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicons/favicon-32x32.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicons/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#0f172a",
+  "background_color": "#f8fafc",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
