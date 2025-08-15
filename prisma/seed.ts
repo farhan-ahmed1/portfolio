@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Seeding database...')
+  console.log('🌱 Seeding database...');
 
   // Create sample metrics for your projects
   const portfolioMetric = await prisma.metric.upsert({
@@ -14,7 +14,7 @@ async function main() {
       views: 42,
       likes: 8,
     },
-  })
+  });
 
   const awsMetric = await prisma.metric.upsert({
     where: { slug: 'aws-cloud-infrastructure' },
@@ -24,7 +24,7 @@ async function main() {
       views: 38,
       likes: 12,
     },
-  })
+  });
 
   const iosMetric = await prisma.metric.upsert({
     where: { slug: 'ios-text-to-speech' },
@@ -34,13 +34,13 @@ async function main() {
       views: 29,
       likes: 5,
     },
-  })
+  });
 
   console.log('✅ Created metrics:', {
     portfolio: portfolioMetric,
     aws: awsMetric,
     ios: iosMetric,
-  })
+  });
 
   // Create a sample contact message
   const sampleMessage = await prisma.message.create({
@@ -49,18 +49,18 @@ async function main() {
       email: 'jane@example.com',
       body: 'Hi! I love your portfolio. Would love to discuss potential opportunities.',
     },
-  })
+  });
 
-  console.log('✅ Created sample message:', sampleMessage)
+  console.log('✅ Created sample message:', sampleMessage);
 }
 
 main()
   .then(async () => {
-    await prisma.$disconnect()
-    console.log('🎉 Seeding completed!')
+    await prisma.$disconnect();
+    console.log('🎉 Seeding completed!');
   })
   .catch(async (e) => {
-    console.error('❌ Seeding failed:', e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+    console.error('❌ Seeding failed:', e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
