@@ -20,6 +20,7 @@ This project uses branch protection and automated deployments:
 ### Making Changes
 
 1. **Create a feature branch** from `main`:
+
    ```bash
    git checkout main
    git pull origin main
@@ -27,6 +28,7 @@ This project uses branch protection and automated deployments:
    ```
 
 2. **Make your changes** and commit:
+
    ```bash
    git add .
    git commit -m "feat: your change description"
@@ -44,6 +46,7 @@ This project uses branch protection and automated deployments:
 ### Branch Protection
 
 The `main` branch is protected and requires:
+
 - ✅ All CI checks must pass
 - ✅ Pull request review (can be bypassed by admin)
 - ✅ Branch must be up to date
