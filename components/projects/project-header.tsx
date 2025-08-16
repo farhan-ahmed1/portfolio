@@ -11,10 +11,6 @@ interface ProjectHeaderProps {
   project: Project;
 }
 
-interface ProjectHeaderProps {
-  project: Project;
-}
-
 export function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
     <motion.header
@@ -23,8 +19,9 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
+      {/* Project Cover Image */}
       <motion.div
-        className="mb-6 overflow-hidden rounded-lg"
+        className="mb-8 w-full"
         initial={{ scale: 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -34,24 +31,43 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
           alt={project.title}
           width={1200}
           height={600}
-          className="object-cover transition-transform duration-300 hover:scale-105"
+          className="w-full h-auto object-cover rounded-lg transition-transform duration-300 hover:scale-[1.02]"
           priority
         />
       </motion.div>
 
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      {/* Title, Role, Date and Action Buttons */}
+      <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between mb-4">
         <motion.div
           className="flex-1"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h1 className="mb-2 text-3xl font-bold tracking-tight md:text-4xl">{project.title}</h1>
-          <p className="text-lg text-muted-foreground">{project.summary}</p>
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl mb-3">{project.title}</h1>
+          
+          {/* Role and Date - moved up here */}
+          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-1">
+            <div className="flex items-center gap-2">
+              <User className="h-4 w-4" />
+              <span className="font-medium">Role:</span> 
+              <span>{project.role}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
+              <span className="font-medium">Date:</span>
+              <span>
+                {new Date(project.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                })}
+              </span>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
-          className="flex gap-3"
+          className="flex gap-3 shrink-0"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -81,8 +97,19 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
         </motion.div>
       </div>
 
+      {/* Brief Description */}
       <motion.div
-        className="mt-6 flex flex-wrap gap-3"
+        className="mb-6"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        <p className="text-lg text-muted-foreground leading-relaxed">{project.summary}</p>
+      </motion.div>
+
+      {/* Technology Tags */}
+      <motion.div
+        className="mb-6 flex flex-wrap gap-3"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -99,26 +126,6 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
             {tech}
           </motion.span>
         ))}
-      </motion.div>
-
-      <motion.div
-        className="mt-4 flex items-center gap-4 text-sm text-muted-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-      >
-        <div className="flex items-center gap-1">
-          <User className="h-3 w-3" />
-          <span className="font-medium">Role:</span> {project.role}
-        </div>
-        <div className="flex items-center gap-1">
-          <Calendar className="h-3 w-3" />
-          <span className="font-medium">Date:</span>{' '}
-          {new Date(project.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-          })}
-        </div>
       </motion.div>
     </motion.header>
   );
