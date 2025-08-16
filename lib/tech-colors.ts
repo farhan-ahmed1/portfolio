@@ -4,7 +4,7 @@
  */
 export const techColors: Record<string, string> = {
   // Languages
-  'TypeScript': 'bg-blue-100 text-blue-900 dark:bg-blue-950/70 dark:text-blue-200 border border-blue-200 dark:border-blue-800',
+  'TypeScript': 'bg-blue-50 text-blue-700 dark:bg-blue-950/80 dark:text-blue-300 border border-blue-200 dark:border-blue-800',
   'JavaScript': 'bg-amber-100 text-amber-900 dark:bg-amber-950/70 dark:text-amber-200 border border-amber-200 dark:border-amber-800',
   'Python': 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950/70 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800',
   'Swift': 'bg-orange-100 text-orange-900 dark:bg-orange-950/70 dark:text-orange-200 border border-orange-200 dark:border-orange-800',
@@ -13,15 +13,15 @@ export const techColors: Record<string, string> = {
   
   // Frameworks & Libraries
   'React': 'bg-cyan-100 text-cyan-900 dark:bg-cyan-950/70 dark:text-cyan-200 border border-cyan-200 dark:border-cyan-800',
-  'Next.js': 'bg-slate-100 text-slate-900 dark:bg-slate-800/70 dark:text-slate-200 border border-slate-200 dark:border-slate-700',
-  'Tailwind CSS': 'bg-teal-100 text-teal-900 dark:bg-teal-950/70 dark:text-teal-200 border border-teal-200 dark:border-teal-800',
-  'Framer Motion': 'bg-fuchsia-100 text-fuchsia-900 dark:bg-fuchsia-950/70 dark:text-fuchsia-200 border border-fuchsia-200 dark:border-fuchsia-800',
-  'MDX': 'bg-rose-100 text-rose-900 dark:bg-rose-950/70 dark:text-rose-200 border border-rose-200 dark:border-rose-800',
+  'Next.js': 'bg-gray-100 text-gray-900 dark:bg-gray-900/70 dark:text-gray-100 border border-gray-300 dark:border-gray-600',
+  'Tailwind CSS': 'bg-sky-100 text-sky-900 dark:bg-sky-950/70 dark:text-sky-200 border border-sky-200 dark:border-sky-800',
+  'Framer Motion': 'bg-purple-100 text-purple-900 dark:bg-purple-950/70 dark:text-purple-200 border border-purple-200 dark:border-purple-800',
+  'MDX': 'bg-orange-100 text-orange-900 dark:bg-orange-950/70 dark:text-orange-200 border border-orange-200 dark:border-orange-800',
   
   // Cloud & Infrastructure
-  'AWS': 'bg-orange-100 text-orange-900 dark:bg-orange-950/70 dark:text-orange-200 border border-orange-200 dark:border-orange-800',
+  'AWS': 'bg-amber-100 text-amber-900 dark:bg-amber-950/70 dark:text-amber-200 border border-amber-200 dark:border-amber-800',
   'CDK': 'bg-pink-100 text-pink-900 dark:bg-pink-950/70 dark:text-pink-200 border border-pink-200 dark:border-pink-800',
-  'Vercel': 'bg-neutral-100 text-neutral-900 dark:bg-neutral-800/70 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700',
+  'Vercel': 'bg-black/10 text-black dark:bg-white/10 dark:text-white border border-gray-300 dark:border-gray-600',
   
   // Platforms & OS
   'iOS': 'bg-stone-100 text-stone-900 dark:bg-stone-800/70 dark:text-stone-200 border border-stone-200 dark:border-stone-700',
