@@ -6,33 +6,15 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { ExternalLink, Github, Eye, Heart, Calendar, ArrowUpRight } from 'lucide-react';
 import type { Project } from '@/lib/projects';
+import { getTechColor } from '@/lib/tech-colors';
 
 interface ProjectGridProps {
   projects: Project[];
 }
 
-const techColors: Record<string, string> = {
-  'TypeScript': 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
-  'JavaScript': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300',
-  'React': 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-300',
-  'Next.js': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-  'Python': 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300',
-  'Swift': 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300',
-  'iOS': 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-  'AWS': 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300',
-  'SQL': 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300',
-  'Web Scraping': 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300',
-  'Text Processing': 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300',
-  'CDK': 'bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300',
-  'Bitbucket': 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
-  'Bamboo': 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300',
-  'PowerShell': 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
-  'Active Directory': 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300',
-};
-
-const getTechColor = (tech: string): string => {
-  return techColors[tech] || 'bg-accent/10 text-accent-foreground border border-accent/20';
-};
+interface ProjectGridProps {
+  projects: Project[];
+}
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
   return (
