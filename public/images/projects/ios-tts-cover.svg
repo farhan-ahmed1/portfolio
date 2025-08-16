@@ -1,0 +1,117 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- iOS-themed gradient -->
+    <linearGradient id="iosGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007AFF;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#FF9500;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#007AFF;stop-opacity:0.08" />
+    </linearGradient>
+    
+    <!-- Audio wave pattern -->
+    <pattern id="audioPattern" patternUnits="userSpaceOnUse" width="40" height="20">
+      <rect x="5" y="5" width="2" height="10" fill="#007AFF" opacity="0.1"/>
+      <rect x="10" y="3" width="2" height="14" fill="#007AFF" opacity="0.08"/>
+      <rect x="15" y="7" width="2" height="6" fill="#007AFF" opacity="0.12"/>
+      <rect x="20" y="2" width="2" height="16" fill="#007AFF" opacity="0.06"/>
+      <rect x="25" y="8" width="2" height="4" fill="#007AFF" opacity="0.1"/>
+      <rect x="30" y="4" width="2" height="12" fill="#007AFF" opacity="0.09"/>
+    </pattern>
+    
+    <!-- iPhone outline -->
+    <g id="phoneOutline">
+      <rect x="0" y="0" width="60" height="100" rx="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.1"/>
+      <circle cx="30" cy="15" r="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.1"/>
+      <rect x="20" y="85" width="20" height="4" rx="2" fill="none" stroke="currentColor" stroke-width="1" opacity="0.1"/>
+    </g>
+    
+    <!-- Sound waves -->
+    <g id="soundWaves">
+      <path d="M0,0 Q10,-5 20,0 Q30,5 40,0" stroke="currentColor" stroke-width="2" fill="none" opacity="0.1"/>
+      <path d="M0,10 Q10,5 20,10 Q30,15 40,10" stroke="currentColor" stroke-width="2" fill="none" opacity="0.08"/>
+      <path d="M0,20 Q10,15 20,20 Q30,25 40,20" stroke="currentColor" stroke-width="2" fill="none" opacity="0.06"/>
+    </g>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#F8FAFC"/>
+  
+  <!-- Gradient overlay -->
+  <rect width="1200" height="600" fill="url(#iosGradient)"/>
+  
+  <!-- Audio wave pattern -->
+  <rect width="1200" height="600" fill="url(#audioPattern)"/>
+  
+  <!-- iPhone decorations -->
+  <use href="#phoneOutline" transform="translate(150, 100)" fill="#007AFF"/>
+  <use href="#phoneOutline" transform="translate(980, 150) scale(0.8)" fill="#FF9500"/>
+  <use href="#phoneOutline" transform="translate(100, 400) scale(1.2)" fill="#007AFF"/>
+  
+  <!-- Sound wave decorations -->
+  <use href="#soundWaves" transform="translate(300, 120)" stroke="#007AFF"/>
+  <use href="#soundWaves" transform="translate(850, 180)" stroke="#FF9500"/>
+  <use href="#soundWaves" transform="translate(200, 450)" stroke="#007AFF"/>
+  <use href="#soundWaves" transform="translate(900, 480)" stroke="#FF9500"/>
+  
+  <!-- Audio icon representation -->
+  <g transform="translate(150, 250)">
+    <!-- Speaker/audio symbol -->
+    <rect x="0" y="15" width="15" height="10" fill="#007AFF" opacity="0.2" rx="2"/>
+    <path d="M18,10 Q25,15 25,25 Q25,35 18,40" stroke="#007AFF" stroke-width="2" fill="none" opacity="0.3"/>
+    <path d="M30,5 Q40,15 40,25 Q40,35 30,45" stroke="#007AFF" stroke-width="2" fill="none" opacity="0.25"/>
+  </g>
+  
+  <!-- Main title -->
+  <text x="600" y="260" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="56" 
+        font-weight="700" 
+        text-anchor="middle" 
+        fill="#0F172A">
+    iOS Text-to-Speech App
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="320" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="24" 
+        font-weight="500" 
+        text-anchor="middle" 
+        fill="#64748B">
+    Accessibility-Focused Mobile Solution
+  </text>
+  
+  <!-- Tech stack indicators -->
+  <g transform="translate(420, 400)">
+    <rect x="0" y="0" width="70" height="28" rx="14" fill="#007AFF" opacity="0.1"/>
+    <text x="35" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#007AFF">Swift</text>
+    
+    <rect x="80" y="0" width="80" height="28" rx="14" fill="#3776AB" opacity="0.1"/>
+    <text x="120" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#3776AB">Python</text>
+    
+    <rect x="170" y="0" width="60" height="28" rx="14" fill="#000000" opacity="0.1"/>
+    <text x="200" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#000000">iOS</text>
+  </g>
+  
+  <!-- URL to Audio flow visualization -->
+  <g transform="translate(500, 120)" opacity="0.3">
+    <!-- URL icon -->
+    <rect x="0" y="0" width="30" height="20" rx="4" fill="none" stroke="#007AFF" stroke-width="1.5"/>
+    <circle cx="8" cy="10" r="2" fill="#007AFF"/>
+    <circle cx="22" cy="10" r="2" fill="#007AFF"/>
+    
+    <!-- Arrow -->
+    <path d="M40,10 L60,10 M55,5 L60,10 L55,15" stroke="#64748B" stroke-width="1.5" fill="none"/>
+    
+    <!-- Audio waves -->
+    <g transform="translate(70, 10)">
+      <circle cx="0" cy="0" r="8" fill="none" stroke="#007AFF" stroke-width="1.5"/>
+      <path d="M12,0 Q18,-3 24,0 Q30,3 36,0" stroke="#007AFF" stroke-width="1.5" fill="none"/>
+      <path d="M12,0 Q18,3 24,0 Q30,-3 36,0" stroke="#007AFF" stroke-width="1.5" fill="none"/>
+    </g>
+  </g>
+  
+  <!-- Geometric accents -->
+  <circle cx="1000" cy="100" r="3" fill="#60A5FA" opacity="0.6"/>
+  <circle cx="200" cy="500" r="2" fill="#60A5FA" opacity="0.4"/>
+  <circle cx="1100" cy="450" r="1.5" fill="#007AFF" opacity="0.7"/>
+</svg>

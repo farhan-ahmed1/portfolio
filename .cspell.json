@@ -2,6 +2,7 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "ADSI",
     "Ahmed",
     "autolink",
     "autoprefixer",
@@ -19,6 +20,7 @@
     "headings",
     "isodate",
     "jspm",
+    "jsxs",
     "lucide",
     "nextjs",
     "pids",
@@ -40,6 +42,7 @@
     "vercel",
     "vitest",
     "WCAG",
+    "wireframes",
     "zod"
   ],
   "flagWords": [],
