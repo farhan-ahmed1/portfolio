@@ -26,6 +26,7 @@ const nextConfig = {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       '@': path.resolve(__dirname),
+      '#site/content': path.resolve(__dirname, '.velite'),
     };
     return config;
   },
