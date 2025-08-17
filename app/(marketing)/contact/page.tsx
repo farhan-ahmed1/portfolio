@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '@/components';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { initEmailJS, sendEmail } from '@/lib/emailjs';
+import { ContactFormData } from '@/lib/validations';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,20 +15,67 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Initialize EmailJS on component mount
+  useEffect(() => {
+    initEmailJS();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setError('Please fill in all fields');
+      setIsSubmitting(false);
+      return;
+    }
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
+    if (formData.message.length < 10) {
+      setError('Message must be at least 10 characters long');
+      setIsSubmitting(false);
+      return;
+    }
 
-    // Reset success message after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000);
+    try {
+      // Send email via EmailJS
+      await sendEmail(formData);
+
+      // Also save to database via API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          body: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save message');
+      }
+
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+
+      // Reset success message after 3 seconds
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err) {
+      console.error('Error sending message:', err);
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Failed to send message. Please try again or contact me directly.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -127,6 +176,13 @@ export default function ContactPage() {
                   <div className="mb-6 rounded-lg bg-emerald-50 p-4 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
                     <p className="font-medium">Message sent successfully!</p>
                     <p className="text-sm">I&apos;ll get back to you as soon as possible.</p>
+                  </div>
+                )}
+
+                {error && (
+                  <div className="mb-6 rounded-lg bg-red-50 p-4 text-red-800 dark:bg-red-900 dark:text-red-200">
+                    <p className="font-medium">Error sending message</p>
+                    <p className="text-sm">{error}</p>
                   </div>
                 )}
 

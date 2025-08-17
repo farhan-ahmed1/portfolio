@@ -10,7 +10,7 @@ My personal portfolio website built with NextJs, Tailwind, TypeScript, Prisma, V
 - **Radix UI + shadcn/ui**
 - **MDX with Velite**
 - **PostgreSQL with Prisma**
-- **Resend** (email)
+- **EmailJS** (contact form emails)
 - **Vercel** (deployment)
 
 ## Development Workflow
