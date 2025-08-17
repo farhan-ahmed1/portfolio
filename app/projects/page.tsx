@@ -1,4 +1,4 @@
-import { getAllProjects } from '@/lib/projects';
+import { getAllProjectsWithMetrics, getFeaturedProjectsWithMetrics } from '@/lib/projects';
 import { ProjectGrid } from '@/components/projects/project-grid';
 import { ProjectFilters } from '@/components/projects/project-filters';
 import { FeaturedProjects } from '@/components/sections/featured-projects';
@@ -10,7 +10,10 @@ export const metadata = {
 };
 
 export default async function ProjectsPage() {
-  const projects = await getAllProjects();
+  const [projects, featuredProjects] = await Promise.all([
+    getAllProjectsWithMetrics(),
+    getFeaturedProjectsWithMetrics(),
+  ]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
@@ -25,7 +28,7 @@ export default async function ProjectsPage() {
         </div>
 
         {/* Featured Projects Section */}
-        <FeaturedProjects />
+        <FeaturedProjects projects={featuredProjects} />
 
         <Suspense fallback={<div>Loading filters...</div>}>
           <ProjectFilters />

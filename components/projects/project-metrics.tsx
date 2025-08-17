@@ -18,24 +18,37 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Track view on component mount
-    const trackView = async () => {
+    // Track view and get current metrics
+    const initializeMetrics = async () => {
       try {
+        // Track view
         await fetch(`/api/views/${slug}`, { method: 'POST' });
+
         // Get current metrics
         const response = await fetch(`/api/views/${slug}`);
         if (response.ok) {
           const data = await response.json();
           setMetrics(data);
         }
+
+        // Check if user has already liked this project
+        const likeResponse = await fetch(`/api/likes/${slug}`);
+        if (likeResponse.ok) {
+          const likeData = await likeResponse.json();
+          setIsLiked(likeData.alreadyLiked);
+          // Update likes count if different
+          if (likeData.likes !== undefined) {
+            setMetrics((prev) => ({ ...prev, likes: likeData.likes }));
+          }
+        }
       } catch (error) {
-        console.error('Failed to track view:', error);
+        console.error('Failed to initialize metrics:', error);
       } finally {
         setIsLoading(false);
       }
     };
 
-    trackView();
+    initializeMetrics();
   }, [slug]);
 
   const handleLike = async () => {
@@ -45,8 +58,16 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
       const response = await fetch(`/api/likes/${slug}`, { method: 'POST' });
       if (response.ok) {
         const data = await response.json();
-        setMetrics((prev) => ({ ...prev, likes: data.likes }));
-        setIsLiked(true);
+
+        if (data.alreadyLiked) {
+          // User has already liked this project
+          setIsLiked(true);
+          console.log(data.message || 'You have already liked this project');
+        } else {
+          // Successfully liked
+          setMetrics((prev) => ({ ...prev, likes: data.likes }));
+          setIsLiked(true);
+        }
       }
     } catch (error) {
       console.error('Failed to like:', error);

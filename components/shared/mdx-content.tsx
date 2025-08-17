@@ -69,6 +69,7 @@ const mdxComponents = {
   },
   ul: ({ children, ...props }: React.HTMLProps<HTMLUListElement>) => {
     const { onAnimationStart, onAnimationEnd, ...restProps } = props as any;
+    const childrenArray = React.Children.toArray(children);
     return (
       <motion.ul
         className="mb-4 ml-6 space-y-3"
@@ -77,7 +78,11 @@ const mdxComponents = {
         transition={{ duration: 0.5, staggerChildren: 0.1 }}
         {...restProps}
       >
-        {children}
+        {childrenArray.map((child, index) =>
+          React.isValidElement(child)
+            ? React.cloneElement(child, { key: child.key || `ul-item-${index}` })
+            : child
+        )}
       </motion.ul>
     );
   },
@@ -86,6 +91,7 @@ const mdxComponents = {
     ...props
   }: React.DetailedHTMLProps<React.OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>) => {
     const { onAnimationStart, onAnimationEnd, ...restProps } = props as any;
+    const childrenArray = React.Children.toArray(children);
     return (
       <motion.ol
         className="mb-4 ml-6 space-y-3"
@@ -94,7 +100,11 @@ const mdxComponents = {
         transition={{ duration: 0.5, staggerChildren: 0.1 }}
         {...restProps}
       >
-        {children}
+        {childrenArray.map((child, index) =>
+          React.isValidElement(child)
+            ? React.cloneElement(child, { key: child.key || `ol-item-${index}` })
+            : child
+        )}
       </motion.ol>
     );
   },
