@@ -54,9 +54,11 @@ export async function getProjectBySlug(slug: string): Promise<Project | undefine
   return projects.find((project) => project.slug === slug);
 }
 
-export async function getProjectBySlugWithMetrics(slug: string): Promise<ProjectWithMetrics | undefined> {
+export async function getProjectBySlugWithMetrics(
+  slug: string
+): Promise<ProjectWithMetrics | undefined> {
   const project = projects.find((project) => project.slug === slug);
-  
+
   if (!project) {
     return undefined;
   }

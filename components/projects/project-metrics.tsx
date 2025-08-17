@@ -43,7 +43,10 @@ export function ProjectMetrics({ slug, initialMetrics }: ProjectMetricsProps) {
           const likeData = await likeResponse.json();
           setIsLiked(likeData.alreadyLiked);
           // Update likes count if we have more recent data
-          if (likeData.likes !== undefined && (!initialMetrics || likeData.likes !== initialMetrics.likes)) {
+          if (
+            likeData.likes !== undefined &&
+            (!initialMetrics || likeData.likes !== initialMetrics.likes)
+          ) {
             setMetrics((prev) => ({ ...prev, likes: likeData.likes }));
           }
         }
