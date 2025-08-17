@@ -5,9 +5,10 @@ import { MouseEventHandler, PropsWithChildren } from 'react';
 
 interface CardProps extends PropsWithChildren {
   className?: string;
+  disableOverlay?: boolean;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className = '' }) => {
+export const Card: React.FC<CardProps> = ({ children, className = '', disableOverlay = false }) => {
   const mouseX = useSpring(0, { stiffness: 500, damping: 100 });
   const mouseY = useSpring(0, { stiffness: 500, damping: 100 });
 
@@ -23,19 +24,21 @@ export const Card: React.FC<CardProps> = ({ children, className = '' }) => {
   return (
     <div
       onMouseMove={onMouseMove}
-      className={`group relative overflow-hidden rounded-xl border border-border bg-background/50 backdrop-blur-sm duration-700 hover:border-accent/50 hover:bg-accent/5 ${className}`}
+      className={`group relative overflow-hidden rounded-xl border border-border ${disableOverlay ? 'bg-transparent' : 'bg-background/50 hover:border-accent/50 hover:bg-accent/5'} duration-700 ${className}`}
     >
-      <div className="pointer-events-none">
-        <div className="absolute inset-0 z-0 transition duration-1000 [mask-image:linear-gradient(black,transparent)]" />
-        <motion.div
-          className="absolute inset-0 z-10 bg-gradient-to-br via-accent/10 opacity-100 transition duration-1000 group-hover:opacity-50"
-          style={style}
-        />
-        <motion.div
-          className="absolute inset-0 z-10 opacity-0 mix-blend-overlay transition duration-1000 group-hover:opacity-100"
-          style={style}
-        />
-      </div>
+      {!disableOverlay && (
+        <div className="pointer-events-none">
+          <div className="absolute inset-0 z-0 transition duration-1000 [mask-image:linear-gradient(black,transparent)]" />
+          <motion.div
+            className="absolute inset-0 z-10 bg-gradient-to-br via-accent/10 opacity-100 transition duration-1000 group-hover:opacity-50"
+            style={style}
+          />
+          <motion.div
+            className="absolute inset-0 z-10 opacity-0 mix-blend-overlay transition duration-1000 group-hover:opacity-100"
+            style={style}
+          />
+        </div>
+      )}
 
       {children}
     </div>

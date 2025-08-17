@@ -28,7 +28,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
           whileHover={{ y: -8 }}
           className="group"
         >
-          <Card className="relative h-full overflow-hidden border-0 bg-card/50 transition-all duration-300 hover:bg-card/80 hover:shadow-xl dark:bg-card/30 dark:hover:bg-card/50">
+          <Card disableOverlay className="relative h-full overflow-hidden border-0 bg-transparent transition-all duration-300 hover:shadow-xl">
             {/* Cover Image */}
             <div className="relative h-48 overflow-hidden">
               <Image
