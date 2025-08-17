@@ -43,8 +43,12 @@ jobs:
           echo "Checking environment variables..."
           echo "NODE_ENV: $NODE_ENV"
           echo "DATABASE_URL exists: $([ -n "$DATABASE_URL" ] && echo "YES" || echo "NO")"
-          echo "Environment file contents:"
-          cat .env | grep -v -E "(SECRET|KEY|TOKEN|PASSWORD)" | head -10
+          echo "Environment file first 10 non-secret lines (if present):"
+          if [ -f .env ]; then
+            grep -v -E "(SECRET|KEY|TOKEN|PASSWORD)" .env | head -10
+          else
+            echo ".env file not found"
+          fi
 
       - name: Generate Prisma Client
         run: npx prisma generate
@@ -80,5 +84,5 @@ jobs:
         run: |
           echo "## 🚀 Production Deployment Successful" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**� Live URL:** ${{ steps.deploy.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+          echo "**🔗 Live URL:** ${{ steps.deploy.outputs.url }}" >> $GITHUB_STEP_SUMMARY
           echo "**📅 Deployed at:** $(date -u)" >> $GITHUB_STEP_SUMMARY
