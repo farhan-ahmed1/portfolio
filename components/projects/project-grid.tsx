@@ -5,15 +5,11 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { ExternalLink, Github, Eye, Heart, Calendar, ArrowUpRight } from 'lucide-react';
-import type { Project } from '@/lib/projects';
+import type { ProjectWithMetrics } from '@/lib/projects';
 import { getTechColor } from '@/lib/tech-colors';
 
 interface ProjectGridProps {
-  projects: Project[];
-}
-
-interface ProjectGridProps {
-  projects: Project[];
+  projects: ProjectWithMetrics[];
 }
 
 export function ProjectGrid({ projects }: ProjectGridProps) {
@@ -118,11 +114,11 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1">
                     <Eye className="h-3 w-3" />
-                    <span>0</span>
+                    <span>{project.metrics.views}</span>
                   </span>
                   <span className="flex items-center gap-1">
                     <Heart className="h-3 w-3" />
-                    <span>0</span>
+                    <span>{project.metrics.likes}</span>
                   </span>
                 </div>
                 <div className="flex items-center gap-1">
