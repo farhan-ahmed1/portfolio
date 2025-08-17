@@ -78,8 +78,14 @@ export async function getProjectBySlugWithMetrics(
       metrics: metric || { views: 0, likes: 0 },
     };
   } catch (error) {
-    // If database is not available, return project with zero metrics
-    console.warn('Database not available, using default metrics:', error);
+    // If database is not available (e.g., during build), return projects with zero metrics
+    console.error('Database error in getProjectBySlugWithMetrics:', {
+      error: error instanceof Error ? error.message : error,
+      slug,
+      nodeEnv: process.env.NODE_ENV,
+      hasDatabase: !!process.env.DATABASE_URL,
+      timestamp: new Date().toISOString(),
+    });
     return {
       ...project,
       metrics: { views: 0, likes: 0 },
