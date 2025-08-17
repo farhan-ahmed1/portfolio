@@ -1,6 +1,7 @@
 import { getProjectBySlugWithMetrics } from '@/lib/projects';
 import { notFound } from 'next/navigation';
 import { MDXContent, ProjectHeader, ProjectMetrics, BackButton } from '@/components';
+import { ProjectStructuredData } from '@/components/seo';
 
 // Use ISR to regenerate every hour, but force dynamic for now to debug
 export const dynamic = 'force-dynamic';
@@ -41,8 +42,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+      <ProjectStructuredData
+        name={project.title}
+        description={project.summary}
+        url={`${siteUrl}/projects/${project.slug}`}
+        author="Farhan Ahmed"
+        dateCreated={project.date}
+        programmingLanguage={project.tech}
+        keywords={project.tech}
+        codeRepository={project.links?.github}
+        image={`${siteUrl}${project.coverImage}`}
+      />
       <article className="container py-12 pt-24">
         <div className="mx-auto max-w-4xl">
           {/* Back to Projects */}

@@ -72,10 +72,11 @@ export default function ResumePage() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h1 className="mb-4 text-4xl font-bold tracking-tight">Resume</h1>
+            <h1 className="mb-4 text-4xl font-bold tracking-tight">Farhan Ahmed - Resume</h1>
             <p className="mb-8 text-lg text-muted-foreground">
-              Computer Science Student at Iowa State University with software engineering experience
-              at Principal Financial and EMC Insurance
+              Farhan Ahmed is a Computer Science Student at Iowa State University with software
+              engineering experience at Principal Financial and EMC Insurance. Specialized in React,
+              TypeScript, and AWS development.
             </p>
 
             <div className="flex flex-col justify-center gap-4 sm:flex-row">

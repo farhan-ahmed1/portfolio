@@ -16,5 +16,8 @@ export * from './animations';
 // Providers
 export * from './providers';
 
+// SEO components
+export * from './seo';
+
 // UI components
 export * from './ui';
