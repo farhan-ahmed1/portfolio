@@ -1,4 +1,4 @@
-import { getProjectBySlug } from '@/lib/projects';
+import { getProjectBySlugWithMetrics } from '@/lib/projects';
 import { notFound } from 'next/navigation';
 import { MDXContent } from '@/components/shared/mdx-content';
 import { ProjectHeader } from '@/components/projects/project-header';
@@ -13,7 +13,7 @@ interface ProjectPageProps {
 
 export async function generateMetadata({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const project = await getProjectBySlugWithMetrics(slug);
 
   if (!project) {
     return {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const project = await getProjectBySlugWithMetrics(slug);
 
   if (!project) {
     notFound();
@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <ProjectHeader project={project} />
 
           {/* Project Metrics */}
-          <ProjectMetrics slug={project.slug} />
+          <ProjectMetrics slug={project.slug} initialMetrics={project.metrics} />
 
           {/* Detailed Content */}
           <div className="prose prose-lg mx-auto">

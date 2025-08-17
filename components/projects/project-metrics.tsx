@@ -5,6 +5,10 @@ import { Eye, Heart } from 'lucide-react';
 
 interface ProjectMetricsProps {
   slug: string;
+  initialMetrics?: {
+    views: number;
+    likes: number;
+  };
 }
 
 interface Metrics {
@@ -12,23 +16,25 @@ interface Metrics {
   likes: number;
 }
 
-export function ProjectMetrics({ slug }: ProjectMetricsProps) {
-  const [metrics, setMetrics] = useState<Metrics>({ views: 0, likes: 0 });
+export function ProjectMetrics({ slug, initialMetrics }: ProjectMetricsProps) {
+  const [metrics, setMetrics] = useState<Metrics>(initialMetrics || { views: 0, likes: 0 });
   const [isLiked, setIsLiked] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!initialMetrics);
 
   useEffect(() => {
     // Track view and get current metrics
     const initializeMetrics = async () => {
       try {
-        // Track view
+        // Always track the view (this will increment if not rate-limited)
         await fetch(`/api/views/${slug}`, { method: 'POST' });
 
-        // Get current metrics
-        const response = await fetch(`/api/views/${slug}`);
-        if (response.ok) {
-          const data = await response.json();
-          setMetrics(data);
+        // If we don't have initial metrics, fetch them
+        if (!initialMetrics) {
+          const response = await fetch(`/api/views/${slug}`);
+          if (response.ok) {
+            const data = await response.json();
+            setMetrics(data);
+          }
         }
 
         // Check if user has already liked this project
@@ -36,8 +42,11 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
         if (likeResponse.ok) {
           const likeData = await likeResponse.json();
           setIsLiked(likeData.alreadyLiked);
-          // Update likes count if different
-          if (likeData.likes !== undefined) {
+          // Update likes count if we have more recent data
+          if (
+            likeData.likes !== undefined &&
+            (!initialMetrics || likeData.likes !== initialMetrics.likes)
+          ) {
             setMetrics((prev) => ({ ...prev, likes: likeData.likes }));
           }
         }
@@ -49,7 +58,7 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
     };
 
     initializeMetrics();
-  }, [slug]);
+  }, [slug, initialMetrics]);
 
   const handleLike = async () => {
     if (isLiked) return; // Prevent double-liking
