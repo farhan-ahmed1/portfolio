@@ -60,14 +60,16 @@ jobs:
 
       - name: Generate Prisma client
         run: npm run db:generate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Build application
         run: npm run build
         env:
+          # Database connection for build-time data fetching
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
           # Disable telemetry during build
           NEXT_TELEMETRY_DISABLED: 1
-          # Skip database connection during build
-          SKIP_ENV_VALIDATION: true
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
