@@ -6,6 +6,10 @@ import { MDXContent, ProjectHeader, ProjectMetrics, BackButton } from '@/compone
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600; // 1 hour
 
+// Use ISR to regenerate every hour, but force dynamic for now to debug
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // 1 hour
+
 interface ProjectPageProps {
   params: Promise<{
     slug: string;
