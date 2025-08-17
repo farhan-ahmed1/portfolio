@@ -11,5 +11,18 @@
   "github": {
     "autoDeployment": true,
     "autoJobCancelation": true
-  }
+  },
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.farhan-ahmed.com"
+        }
+      ],
+      "destination": "https://farhan-ahmed.com/$1",
+      "permanent": true
+    }
+  ]
 }
