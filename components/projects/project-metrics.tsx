@@ -55,7 +55,7 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
 
   if (isLoading) {
     return (
-      <div className="mb-8 flex items-center gap-6 text-sm text-muted-foreground">
+      <div className="mb-6 flex items-center gap-4 border-l-2 border-accent/20 pl-4 text-sm text-muted-foreground">
         <div className="flex items-center gap-2">
           <Eye className="h-4 w-4" />
           <span>Loading...</span>
@@ -69,7 +69,7 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
   }
 
   return (
-    <div className="mb-8 flex items-center gap-6 text-sm text-muted-foreground">
+    <div className="mb-6 flex items-center gap-4 border-l-2 border-accent/20 pl-4 text-sm text-muted-foreground">
       <div className="flex items-center gap-2">
         <Eye className="h-4 w-4" />
         <span>{metrics.views.toLocaleString()} views</span>
