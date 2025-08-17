@@ -34,7 +34,7 @@ const mdxComponents = {
         transition={{ duration: 0.5 }}
         {...restProps}
       >
-        <div className="h-1 w-8 bg-accent rounded-full" />
+        <div className="h-1 w-8 rounded-full bg-accent" />
         {children}
       </motion.h2>
     );
@@ -101,8 +101,8 @@ const mdxComponents = {
   li: ({ children, ...props }: React.HTMLProps<HTMLLIElement>) => {
     const { onAnimationStart, onAnimationEnd, ...restProps } = props as any;
     const content = React.Children.toArray(children);
-    const hasStrong = content.some(child => 
-      React.isValidElement(child) && child.type === 'strong'
+    const hasStrong = content.some(
+      (child) => React.isValidElement(child) && child.type === 'strong'
     );
 
     return (
@@ -135,14 +135,17 @@ const mdxComponents = {
         {...restProps}
       >
         <div className="flex items-start gap-3">
-          <Lightbulb className="mt-1 h-5 w-5 text-accent flex-shrink-0" />
+          <Lightbulb className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
           <div>{children}</div>
         </div>
       </motion.blockquote>
     );
   },
   code: ({ children, ...props }: React.HTMLProps<HTMLElement>) => (
-    <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground border" {...props}>
+    <code
+      className="rounded border bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground"
+      {...props}
+    >
       {children}
     </code>
   ),
@@ -150,13 +153,13 @@ const mdxComponents = {
     const { onAnimationStart, onAnimationEnd, ...restProps } = props as any;
     return (
       <motion.pre
-        className="mb-4 overflow-x-auto rounded-lg bg-muted/50 p-4 text-sm border"
+        className="mb-4 overflow-x-auto rounded-lg border bg-muted/50 p-4 text-sm"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         {...restProps}
       >
-        <div className="flex items-center gap-2 mb-2 text-xs text-muted-foreground">
+        <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
           <Code2 className="h-3 w-3" />
           <span>Code</span>
         </div>
@@ -167,7 +170,7 @@ const mdxComponents = {
   a: ({ children, href, ...props }: React.HTMLProps<HTMLAnchorElement>) => (
     <a
       href={href}
-      className="font-medium text-accent underline underline-offset-4 hover:text-accent/80 transition-colors duration-200"
+      className="font-medium text-accent underline underline-offset-4 transition-colors duration-200 hover:text-accent/80"
       target={href?.startsWith('http') ? '_blank' : undefined}
       rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
       {...props}
@@ -183,12 +186,12 @@ const mdxComponents = {
       transition={{ duration: 0.5 }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img 
-        src={src} 
-        alt={alt} 
-        className="w-full rounded-lg shadow-md transition-transform duration-300 hover:scale-105" 
-        loading="lazy" 
-        {...props} 
+      <img
+        src={src}
+        alt={alt}
+        className="w-full rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+        loading="lazy"
+        {...props}
       />
     </motion.div>
   ),
@@ -205,14 +208,14 @@ export function MDXContent({ content }: MDXContentProps) {
     try {
       // Create a function that executes the compiled MDX code
       const fn = new Function('arguments', content);
-      
+
       // Velite/MDX expects JSX runtime functions as the first argument
       const jsxRuntime = {
         Fragment: React.Fragment,
         jsx: React.createElement,
         jsxs: React.createElement,
       };
-      
+
       // Execute the function with JSX runtime
       const result = fn([jsxRuntime]);
       // Return the default export (the MDX component)

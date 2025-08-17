@@ -28,7 +28,10 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
           whileHover={{ y: -8 }}
           className="group"
         >
-          <Card disableOverlay className="relative h-full overflow-hidden border-0 bg-transparent transition-all duration-300 hover:shadow-xl">
+          <Card
+            disableOverlay
+            className="relative h-full overflow-hidden border-0 bg-transparent transition-all duration-300 hover:shadow-xl"
+          >
             {/* Cover Image */}
             <div className="relative h-48 overflow-hidden">
               <Image
@@ -38,7 +41,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              
+
               {/* Action Buttons */}
               <div className="absolute right-3 top-3 flex gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {project.links?.github && (
@@ -47,7 +50,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-200 hover:bg-black/70 hover:scale-110"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-200 hover:scale-110 hover:bg-black/70"
                   >
                     <Github className="h-4 w-4" />
                   </Link>
@@ -58,7 +61,7 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-200 hover:bg-black/70 hover:scale-110"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-200 hover:scale-110 hover:bg-black/70"
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Link>
@@ -82,11 +85,11 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
                 <h3 className="text-lg font-semibold leading-tight text-foreground transition-colors group-hover:text-accent">
                   {project.title}
                 </h3>
-                <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
               </div>
 
               {/* Summary */}
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+              <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
                 {project.summary}
               </p>
 
