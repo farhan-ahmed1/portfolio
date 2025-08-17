@@ -3,11 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
+import { Card, useHoverAnimation } from '@/components';
 import { ExternalLink, Github, Eye, Heart, Calendar, ArrowUpRight } from 'lucide-react';
 import type { ProjectWithMetrics } from '@/lib/projects';
 import { getTechColor } from '@/lib/tech-colors';
-import { useHoverAnimation } from '@/components/animations';
 
 interface FeaturedProjectsProps {
   projects: ProjectWithMetrics[];

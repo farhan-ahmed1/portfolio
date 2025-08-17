@@ -1,7 +1,5 @@
 import { getAllProjectsWithMetrics, getFeaturedProjectsWithMetrics } from '@/lib/projects';
-import { ProjectGrid } from '@/components/projects/project-grid';
-import { ProjectFilters } from '@/components/projects/project-filters';
-import { FeaturedProjects } from '@/components/sections/featured-projects';
+import { ProjectGrid, ProjectFilters, FeaturedProjects } from '@/components';
 import { Suspense } from 'react';
 
 export const metadata = {

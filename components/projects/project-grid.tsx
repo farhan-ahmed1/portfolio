@@ -2,11 +2,10 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
+import { Card, useHoverAnimation } from '@/components';
 import { ArrowUpRight, ExternalLink, Github, Eye, Heart } from 'lucide-react';
 import type { ProjectWithMetrics } from '@/lib/projects';
 import { getTechColor } from '@/lib/tech-colors';
-import { useHoverAnimation } from '@/components/animations';
 
 interface ProjectGridProps {
   projects: ProjectWithMetrics[];

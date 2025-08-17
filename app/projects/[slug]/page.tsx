@@ -1,9 +1,6 @@
 import { getProjectBySlugWithMetrics } from '@/lib/projects';
 import { notFound } from 'next/navigation';
-import { MDXContent } from '@/components/shared/mdx-content';
-import { ProjectHeader } from '@/components/projects/project-header';
-import { ProjectMetrics } from '@/components/projects/project-metrics';
-import { BackButton } from '@/components/ui/back-button';
+import { MDXContent, ProjectHeader, ProjectMetrics, BackButton } from '@/components';
 
 // Use ISR to regenerate every hour, but force dynamic for now to debug
 export const dynamic = 'force-dynamic';
