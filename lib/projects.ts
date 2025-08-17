@@ -17,28 +17,37 @@ export async function getAllProjects(): Promise<Project[]> {
 export async function getAllProjectsWithMetrics(): Promise<ProjectWithMetrics[]> {
   const allProjects = await getAllProjects();
 
-  // Get metrics for all projects
-  const metrics = await prisma.metric.findMany({
-    where: {
-      slug: {
-        in: allProjects.map((p) => p.slug),
+  try {
+    // Get metrics for all projects
+    const metrics = await prisma.metric.findMany({
+      where: {
+        slug: {
+          in: allProjects.map((p) => p.slug),
+        },
       },
-    },
-    select: {
-      slug: true,
-      views: true,
-      likes: true,
-    },
-  });
+      select: {
+        slug: true,
+        views: true,
+        likes: true,
+      },
+    });
 
-  // Create a map for easy lookup
-  const metricsMap = new Map(metrics.map((m) => [m.slug, { views: m.views, likes: m.likes }]));
+    // Create a map for easy lookup
+    const metricsMap = new Map(metrics.map((m) => [m.slug, { views: m.views, likes: m.likes }]));
 
-  // Combine projects with their metrics
-  return allProjects.map((project) => ({
-    ...project,
-    metrics: metricsMap.get(project.slug) || { views: 0, likes: 0 },
-  }));
+    // Combine projects with their metrics
+    return allProjects.map((project) => ({
+      ...project,
+      metrics: metricsMap.get(project.slug) || { views: 0, likes: 0 },
+    }));
+  } catch (error) {
+    // If database is not available (e.g., during build), return projects with zero metrics
+    console.warn('Database not available, using default metrics:', error);
+    return allProjects.map((project) => ({
+      ...project,
+      metrics: { views: 0, likes: 0 },
+    }));
+  }
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
@@ -54,28 +63,37 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 export async function getFeaturedProjectsWithMetrics(): Promise<ProjectWithMetrics[]> {
   const featuredProjects = await getFeaturedProjects();
 
-  // Get metrics for featured projects
-  const metrics = await prisma.metric.findMany({
-    where: {
-      slug: {
-        in: featuredProjects.map((p) => p.slug),
+  try {
+    // Get metrics for featured projects
+    const metrics = await prisma.metric.findMany({
+      where: {
+        slug: {
+          in: featuredProjects.map((p) => p.slug),
+        },
       },
-    },
-    select: {
-      slug: true,
-      views: true,
-      likes: true,
-    },
-  });
+      select: {
+        slug: true,
+        views: true,
+        likes: true,
+      },
+    });
 
-  // Create a map for easy lookup
-  const metricsMap = new Map(metrics.map((m) => [m.slug, { views: m.views, likes: m.likes }]));
+    // Create a map for easy lookup
+    const metricsMap = new Map(metrics.map((m) => [m.slug, { views: m.views, likes: m.likes }]));
 
-  // Combine projects with their metrics
-  return featuredProjects.map((project) => ({
-    ...project,
-    metrics: metricsMap.get(project.slug) || { views: 0, likes: 0 },
-  }));
+    // Combine projects with their metrics
+    return featuredProjects.map((project) => ({
+      ...project,
+      metrics: metricsMap.get(project.slug) || { views: 0, likes: 0 },
+    }));
+  } catch (error) {
+    // If database is not available (e.g., during build), return projects with zero metrics
+    console.warn('Database not available, using default metrics:', error);
+    return featuredProjects.map((project) => ({
+      ...project,
+      metrics: { views: 0, likes: 0 },
+    }));
+  }
 }
 
 export function getUniqueSkills(): string[] {
