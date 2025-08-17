@@ -54,6 +54,37 @@ export async function getProjectBySlug(slug: string): Promise<Project | undefine
   return projects.find((project) => project.slug === slug);
 }
 
+export async function getProjectBySlugWithMetrics(slug: string): Promise<ProjectWithMetrics | undefined> {
+  const project = projects.find((project) => project.slug === slug);
+  
+  if (!project) {
+    return undefined;
+  }
+
+  try {
+    // Get metrics for this specific project
+    const metric = await prisma.metric.findUnique({
+      where: { slug },
+      select: {
+        views: true,
+        likes: true,
+      },
+    });
+
+    return {
+      ...project,
+      metrics: metric || { views: 0, likes: 0 },
+    };
+  } catch (error) {
+    // If database is not available, return project with zero metrics
+    console.warn('Database not available, using default metrics:', error);
+    return {
+      ...project,
+      metrics: { views: 0, likes: 0 },
+    };
+  }
+}
+
 export async function getFeaturedProjects(): Promise<Project[]> {
   return projects
     .filter((project) => project.featured)
