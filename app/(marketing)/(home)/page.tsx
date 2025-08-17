@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import Particles from '@/components/ui/particles';
+import { Particles } from '@/components/ui';
 import { TypingAnimation } from '@/components/animations';
-import { Timeline } from '@/components/sections/timeline';
+import { Timeline } from '@/components/sections';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function HomePage() {
