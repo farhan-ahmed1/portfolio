@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
+import { Card } from '@/components';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 
 export default function ContactPage() {
