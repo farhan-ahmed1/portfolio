@@ -19,22 +19,20 @@ interface Metrics {
 export function ProjectMetrics({ slug, initialMetrics }: ProjectMetricsProps) {
   const [metrics, setMetrics] = useState<Metrics>(initialMetrics || { views: 0, likes: 0 });
   const [isLiked, setIsLiked] = useState(false);
-  const [isLoading, setIsLoading] = useState(!initialMetrics);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Track view and get current metrics
+    // Track view and always get current metrics from the API (initialMetrics can be stale)
     const initializeMetrics = async () => {
       try {
         // Always track the view (this will increment if not rate-limited)
         await fetch(`/api/views/${slug}`, { method: 'POST' });
 
-        // If we don't have initial metrics, fetch them
-        if (!initialMetrics) {
-          const response = await fetch(`/api/views/${slug}`);
-          if (response.ok) {
-            const data = await response.json();
-            setMetrics(data);
-          }
+        // Always fetch current metrics to reflect latest server state
+        const response = await fetch(`/api/views/${slug}`);
+        if (response.ok) {
+          const data = await response.json();
+          setMetrics(data);
         }
 
         // Check if user has already liked this project

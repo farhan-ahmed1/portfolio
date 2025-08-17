@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -19,6 +21,12 @@ const nextConfig = {
     if (dev) {
       config.output.chunkLoadTimeout = 30000; // 30 seconds
     }
+    // Ensure TS path aliases work in production builds
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      '@': path.resolve(__dirname),
+    };
     return config;
   },
   async headers() {
