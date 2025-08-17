@@ -5,6 +5,10 @@ import { ProjectHeader } from '@/components/projects/project-header';
 import { ProjectMetrics } from '@/components/projects/project-metrics';
 import { BackButton } from '@/components/ui/back-button';
 
+// Use ISR to regenerate every hour, but force dynamic for now to debug
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // 1 hour
+
 interface ProjectPageProps {
   params: Promise<{
     slug: string;
