@@ -23,7 +23,7 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
       try {
         // Track view
         await fetch(`/api/views/${slug}`, { method: 'POST' });
-        
+
         // Get current metrics
         const response = await fetch(`/api/views/${slug}`);
         if (response.ok) {
@@ -38,7 +38,7 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
           setIsLiked(likeData.alreadyLiked);
           // Update likes count if different
           if (likeData.likes !== undefined) {
-            setMetrics(prev => ({ ...prev, likes: likeData.likes }));
+            setMetrics((prev) => ({ ...prev, likes: likeData.likes }));
           }
         }
       } catch (error) {
@@ -58,7 +58,7 @@ export function ProjectMetrics({ slug }: ProjectMetricsProps) {
       const response = await fetch(`/api/likes/${slug}`, { method: 'POST' });
       if (response.ok) {
         const data = await response.json();
-        
+
         if (data.alreadyLiked) {
           // User has already liked this project
           setIsLiked(true);

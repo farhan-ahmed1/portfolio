@@ -16,30 +16,28 @@ export async function getAllProjects(): Promise<Project[]> {
 
 export async function getAllProjectsWithMetrics(): Promise<ProjectWithMetrics[]> {
   const allProjects = await getAllProjects();
-  
+
   // Get metrics for all projects
   const metrics = await prisma.metric.findMany({
     where: {
       slug: {
-        in: allProjects.map(p => p.slug)
-      }
+        in: allProjects.map((p) => p.slug),
+      },
     },
     select: {
       slug: true,
       views: true,
-      likes: true
-    }
+      likes: true,
+    },
   });
 
   // Create a map for easy lookup
-  const metricsMap = new Map(
-    metrics.map(m => [m.slug, { views: m.views, likes: m.likes }])
-  );
+  const metricsMap = new Map(metrics.map((m) => [m.slug, { views: m.views, likes: m.likes }]));
 
   // Combine projects with their metrics
-  return allProjects.map(project => ({
+  return allProjects.map((project) => ({
     ...project,
-    metrics: metricsMap.get(project.slug) || { views: 0, likes: 0 }
+    metrics: metricsMap.get(project.slug) || { views: 0, likes: 0 },
   }));
 }
 
@@ -55,30 +53,28 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 
 export async function getFeaturedProjectsWithMetrics(): Promise<ProjectWithMetrics[]> {
   const featuredProjects = await getFeaturedProjects();
-  
+
   // Get metrics for featured projects
   const metrics = await prisma.metric.findMany({
     where: {
       slug: {
-        in: featuredProjects.map(p => p.slug)
-      }
+        in: featuredProjects.map((p) => p.slug),
+      },
     },
     select: {
       slug: true,
       views: true,
-      likes: true
-    }
+      likes: true,
+    },
   });
 
   // Create a map for easy lookup
-  const metricsMap = new Map(
-    metrics.map(m => [m.slug, { views: m.views, likes: m.likes }])
-  );
+  const metricsMap = new Map(metrics.map((m) => [m.slug, { views: m.views, likes: m.likes }]));
 
   // Combine projects with their metrics
-  return featuredProjects.map(project => ({
+  return featuredProjects.map((project) => ({
     ...project,
-    metrics: metricsMap.get(project.slug) || { views: 0, likes: 0 }
+    metrics: metricsMap.get(project.slug) || { views: 0, likes: 0 },
   }));
 }
 

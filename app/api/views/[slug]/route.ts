@@ -10,31 +10,31 @@ export async function POST(
 
     // Get user IP address
     const userIP =
-      request.headers.get('x-forwarded-for')?.split(',')[0] || 
-      request.headers.get('x-real-ip') || 
+      request.headers.get('x-forwarded-for')?.split(',')[0] ||
+      request.headers.get('x-real-ip') ||
       request.headers.get('cf-connecting-ip') ||
       'unknown';
 
     // Rate limiting: Only allow 1 view per IP per project per hour
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
-    
+
     const recentView = await prisma.interaction.findFirst({
       where: {
         ip: userIP,
         slug,
         type: 'VIEW',
         createdAt: {
-          gt: oneHourAgo
-        }
-      }
+          gt: oneHourAgo,
+        },
+      },
     });
 
     if (recentView) {
       // User has viewed this project recently, don't count again
       const metric = await prisma.metric.findUnique({ where: { slug } });
-      return NextResponse.json({ 
+      return NextResponse.json({
         views: metric?.views || 0,
-        rateLimited: true 
+        rateLimited: true,
       });
     }
 
@@ -45,8 +45,8 @@ export async function POST(
         data: {
           ip: userIP,
           slug,
-          type: 'VIEW'
-        }
+          type: 'VIEW',
+        },
       });
 
       // Update the metric
@@ -59,9 +59,9 @@ export async function POST(
       return metric;
     });
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       views: result.views,
-      rateLimited: false 
+      rateLimited: false,
     });
   } catch (error) {
     console.error('Views API error:', error);

@@ -18,7 +18,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   if (!projects || projects.length === 0) {
     return null;
   }
-  
+
   return (
     <div className="mb-16">
       <div className="mb-8">
@@ -51,18 +51,18 @@ function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={{ 
-        opacity: 1, 
+      animate={{
+        opacity: 1,
         y: isHovered ? -8 : 0,
         transition: {
           opacity: { duration: 0.5, delay: index * 0.1 },
-          y: { 
-            duration: 0.3, 
-            type: "spring", 
-            stiffness: 300, 
-            damping: 20 
-          }
-        }
+          y: {
+            duration: 0.3,
+            type: 'spring',
+            stiffness: 300,
+            damping: 20,
+          },
+        },
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -89,7 +89,7 @@ function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-200 hover:scale-110 hover:bg-black/70 relative z-20"
+                className="relative z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-200 hover:scale-110 hover:bg-black/70"
               >
                 <Github className="h-4 w-4" />
               </Link>
@@ -100,7 +100,7 @@ function FeaturedProjectCard({ project, index }: FeaturedProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-200 hover:scale-110 hover:bg-black/70 relative z-20"
+                className="relative z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white transition-all duration-200 hover:scale-110 hover:bg-black/70"
               >
                 <ExternalLink className="h-4 w-4" />
               </Link>

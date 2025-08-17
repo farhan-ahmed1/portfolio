@@ -12,7 +12,7 @@ export const metadata = {
 export default async function ProjectsPage() {
   const [projects, featuredProjects] = await Promise.all([
     getAllProjectsWithMetrics(),
-    getFeaturedProjectsWithMetrics()
+    getFeaturedProjectsWithMetrics(),
   ]);
 
   return (

@@ -78,8 +78,8 @@ const mdxComponents = {
         transition={{ duration: 0.5, staggerChildren: 0.1 }}
         {...restProps}
       >
-        {childrenArray.map((child, index) => 
-          React.isValidElement(child) 
+        {childrenArray.map((child, index) =>
+          React.isValidElement(child)
             ? React.cloneElement(child, { key: child.key || `ul-item-${index}` })
             : child
         )}
@@ -100,8 +100,8 @@ const mdxComponents = {
         transition={{ duration: 0.5, staggerChildren: 0.1 }}
         {...restProps}
       >
-        {childrenArray.map((child, index) => 
-          React.isValidElement(child) 
+        {childrenArray.map((child, index) =>
+          React.isValidElement(child)
             ? React.cloneElement(child, { key: child.key || `ol-item-${index}` })
             : child
         )}

@@ -35,30 +35,33 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ 
-        opacity: 1, 
+      animate={{
+        opacity: 1,
         y: isHovered ? -8 : 0,
         transition: {
           opacity: { duration: 0.5, delay: index * 0.1 },
-          y: { 
-            duration: 0.3, 
-            type: "spring", 
-            stiffness: 300, 
-            damping: 20 
-          }
-        }
+          y: {
+            duration: 0.3,
+            type: 'spring',
+            stiffness: 300,
+            damping: 20,
+          },
+        },
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="group relative"
     >
-      <Card disableOverlay className="group h-full transition-all duration-300 hover:shadow-xl hover:border-accent border border-border relative">
-        <div className="flex h-full flex-col p-6 relative">
+      <Card
+        disableOverlay
+        className="group relative h-full border border-border transition-all duration-300 hover:border-accent hover:shadow-xl"
+      >
+        <div className="relative flex h-full flex-col p-6">
           <div className="mb-4 flex items-start justify-between">
             <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
               {project.title}
             </h3>
-            <div className="flex gap-2 relative z-20">
+            <div className="relative z-20 flex gap-2">
               {project.links?.github && (
                 <Link
                   href={project.links.github}
@@ -84,9 +87,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             </div>
           </div>
 
-          <p className="mb-6 text-sm text-slate-600 dark:text-slate-400">
-            {project.summary}
-          </p>
+          <p className="mb-6 text-sm text-slate-600 dark:text-slate-400">{project.summary}</p>
 
           {/* Spacer to push content to bottom */}
           <div className="flex-grow" />
@@ -113,7 +114,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="flex items-center justify-between">
             <Link
               href={`/projects/${project.slug}`}
-              className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-emerald-400 dark:hover:text-emerald-300 relative z-20"
+              className="relative z-20 inline-flex items-center gap-2 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-emerald-400 dark:hover:text-emerald-300"
               onClick={(e) => e.stopPropagation()}
             >
               View Project

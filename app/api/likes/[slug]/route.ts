@@ -10,8 +10,8 @@ export async function POST(
 
     // Get user IP address
     const userIP =
-      request.headers.get('x-forwarded-for')?.split(',')[0] || 
-      request.headers.get('x-real-ip') || 
+      request.headers.get('x-forwarded-for')?.split(',')[0] ||
+      request.headers.get('x-real-ip') ||
       request.headers.get('cf-connecting-ip') ||
       'unknown';
 
@@ -21,19 +21,22 @@ export async function POST(
         ip_slug_type: {
           ip: userIP,
           slug,
-          type: 'LIKE'
-        }
-      }
+          type: 'LIKE',
+        },
+      },
     });
 
     if (existingLike) {
       // User has already liked this project
       const metric = await prisma.metric.findUnique({ where: { slug } });
-      return NextResponse.json({ 
-        likes: metric?.likes || 0,
-        alreadyLiked: true,
-        message: 'You have already liked this project' 
-      }, { status: 200 });
+      return NextResponse.json(
+        {
+          likes: metric?.likes || 0,
+          alreadyLiked: true,
+          message: 'You have already liked this project',
+        },
+        { status: 200 }
+      );
     }
 
     // Create the interaction record and update metric in a transaction
@@ -43,8 +46,8 @@ export async function POST(
         data: {
           ip: userIP,
           slug,
-          type: 'LIKE'
-        }
+          type: 'LIKE',
+        },
       });
 
       // Update the metric
@@ -57,9 +60,9 @@ export async function POST(
       return metric;
     });
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       likes: result.likes,
-      alreadyLiked: false 
+      alreadyLiked: false,
     });
   } catch (error) {
     console.error('Likes API error:', error);
@@ -67,17 +70,14 @@ export async function POST(
   }
 }
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
-) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
 
     // Get user IP address
     const userIP =
-      request.headers.get('x-forwarded-for')?.split(',')[0] || 
-      request.headers.get('x-real-ip') || 
+      request.headers.get('x-forwarded-for')?.split(',')[0] ||
+      request.headers.get('x-real-ip') ||
       request.headers.get('cf-connecting-ip') ||
       'unknown';
 
@@ -87,9 +87,9 @@ export async function GET(
         ip_slug_type: {
           ip: userIP,
           slug,
-          type: 'LIKE'
-        }
-      }
+          type: 'LIKE',
+        },
+      },
     });
 
     // Get metric data
@@ -97,7 +97,7 @@ export async function GET(
 
     return NextResponse.json({
       likes: metric?.likes || 0,
-      alreadyLiked: !!existingLike
+      alreadyLiked: !!existingLike,
     });
   } catch (error) {
     console.error('Likes GET API error:', error);
