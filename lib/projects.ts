@@ -84,7 +84,7 @@ export async function getProjectBySlugWithMetrics(
       slug,
       nodeEnv: process.env.NODE_ENV,
       hasDatabase: !!process.env.DATABASE_URL,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
     return {
       ...project,

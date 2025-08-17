@@ -59,7 +59,7 @@ jobs:
             echo "Database connection failed!"
             exit 1
           }
-          
+
       - name: Seed Database (if needed)
         run: |
           echo "Ensuring database has required data..."
