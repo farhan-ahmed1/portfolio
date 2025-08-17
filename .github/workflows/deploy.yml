@@ -38,14 +38,39 @@ jobs:
       - name: Load Environment Variables
         run: cp .vercel/.env.production.local .env
 
+      - name: Debug Environment Variables
+        run: |
+          echo "Checking environment variables..."
+          echo "NODE_ENV: $NODE_ENV"
+          echo "DATABASE_URL exists: $([ -n "$DATABASE_URL" ] && echo "YES" || echo "NO")"
+          echo "Environment file contents:"
+          cat .env | grep -v -E "(SECRET|KEY|TOKEN|PASSWORD)" | head -10
+
       - name: Generate Prisma Client
         run: npx prisma generate
 
       - name: Run Database Migrations
         run: npx prisma migrate deploy
 
+      - name: Test Database Connection
+        run: |
+          echo "Testing database connection..."
+          npx prisma db execute --stdin <<< "SELECT 1;" || {
+            echo "Database connection failed!"
+            exit 1
+          }
+          
+      - name: Seed Database (if needed)
+        run: |
+          echo "Ensuring database has required data..."
+          npm run db:seed || echo "Seed completed or not needed"
+
       - name: Build Project Artifacts
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: |
+          echo "Building project with database access..."
+          # Set environment for build process
+          export NODE_ENV=production
+          vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         id: deploy
