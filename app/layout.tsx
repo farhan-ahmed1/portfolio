@@ -1,5 +1,5 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { ThemeProvider, Toaster } from '@/components';
@@ -11,6 +11,17 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
+};
 
 export const metadata: Metadata = {
   title: {
@@ -93,6 +104,13 @@ export const metadata: Metadata = {
     google: 'your-google-verification-code', // Add when you set up Google Search Console
     // bing: 'your-bing-verification-code', // Add when you set up Bing Webmaster Tools
   },
+  formatDetection: {
+    telephone: false,
+    date: false,
+    address: false,
+    email: false,
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
