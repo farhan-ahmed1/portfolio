@@ -95,10 +95,12 @@ export default function ContactPage() {
             transition={{ duration: 0.5 }}
             className="mb-12 text-center"
           >
-            <h1 className="mb-4 text-4xl font-bold tracking-tight">Get In Touch</h1>
+            <h1 className="mb-4 text-4xl font-bold tracking-tight">Contact Farhan Ahmed</h1>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              I&apos;m always interested in new opportunities and collaborations. Whether you have a
-              project in mind or just want to say hello, I&apos;d love to hear from you.
+              Farhan Ahmed is always interested in new software engineering opportunities and
+              collaborations. Whether you have a project in mind, want to discuss React/TypeScript
+              development, or explore opportunities in the Des Moines area, I&apos;d love to hear
+              from you.
             </p>
           </motion.div>
 

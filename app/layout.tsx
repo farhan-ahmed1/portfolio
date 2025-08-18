@@ -1,8 +1,13 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { ThemeProvider, Toaster } from '@/components';
+import {
+  PersonStructuredData,
+  WebsiteStructuredData,
+  OrganizationStructuredData,
+} from '@/components/seo';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({
@@ -11,27 +16,46 @@ const inter = Inter({
   display: 'swap',
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
+};
+
 export const metadata: Metadata = {
   title: {
-    default: 'Farhan Ahmed - Portfolio',
+    default: 'Farhan Ahmed - Software Engineer & Computer Science Student',
     template: '%s | Farhan Ahmed',
   },
   description:
-    'Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance.',
+    'Farhan Ahmed is a Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance. Specialized in React, Next.js, TypeScript, AWS, and full-stack development.',
   keywords: [
-    'developer',
-    'portfolio',
-    'software engineer',
-    'computer science',
-    'react',
-    'nextjs',
-    'typescript',
-    'aws',
-    'python',
+    'Farhan Ahmed',
+    'Software Engineer',
+    'Computer Science Student',
+    'Iowa State University',
+    'Principal Financial',
+    'EMC Insurance',
+    'React Developer',
+    'Next.js Developer',
+    'TypeScript Developer',
+    'AWS Developer',
+    'Full Stack Developer',
+    'Software Engineering Intern',
+    'Web Developer',
+    'Portfolio',
+    'Des Moines Developer',
+    'Iowa Developer',
   ],
-  authors: [{ name: 'Farhan Ahmed' }],
+  authors: [{ name: 'Farhan Ahmed', url: 'https://farhan-ahmed.com' }],
   creator: 'Farhan Ahmed',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  publisher: 'Farhan Ahmed',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com'),
   icons: {
     icon: [
       { url: '/favicons/favicon.svg', type: 'image/svg+xml' },
@@ -45,25 +69,26 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    title: 'Farhan Ahmed - Portfolio',
+    title: 'Farhan Ahmed - Software Engineer & Computer Science Student',
     description:
-      'Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance.',
+      'Farhan Ahmed is a Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance. Specialized in React, Next.js, TypeScript, AWS, and full-stack development.',
     siteName: 'Farhan Ahmed Portfolio',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image',
         width: 1200,
         height: 630,
-        alt: 'Farhan Ahmed - Portfolio',
+        alt: 'Farhan Ahmed - Software Engineer Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Farhan Ahmed - Portfolio',
+    title: 'Farhan Ahmed - Software Engineer & Computer Science Student',
     description:
-      'Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance.',
-    images: ['/og-image.png'],
+      'Farhan Ahmed is a Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance.',
+    images: ['/og-image'],
+    creator: '@farhanahmed', // Add your Twitter handle if you have one
   },
   robots: {
     index: true,
@@ -76,11 +101,73 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  alternates: {
+    canonical: '/',
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    // bing: 'your-bing-verification-code', // Add when you set up Bing Webmaster Tools
+  },
+  formatDetection: {
+    telephone: false,
+    date: false,
+    address: false,
+    email: false,
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <PersonStructuredData
+          name="Farhan Ahmed"
+          jobTitle="Software Engineer & Computer Science Student"
+          description="Computer Science student at Iowa State University with software engineering experience at Principal Financial and EMC Insurance. Specialized in React, Next.js, TypeScript, AWS, and full-stack development."
+          url={siteUrl}
+          image={`${siteUrl}/og-image`}
+          sameAs={[
+            // Add your social media profiles - update LinkedIn URL once optimized
+            'https://www.linkedin.com/in/farhan-m-ahmed/', // Update with your actual optimized LinkedIn URL
+            'https://github.com/farhan-ahmed1', // Your GitHub
+            // 'https://twitter.com/farhanahmed', // Add if you have Twitter
+          ]}
+          alumniOf="Iowa State University"
+          worksFor={[
+            { name: 'Principal Financial', url: 'https://principal.com' },
+            { name: 'EMC Insurance', url: 'https://emcins.com' },
+          ]}
+          address={{
+            addressLocality: 'Des Moines',
+            addressRegion: 'IA',
+            addressCountry: 'US',
+          }}
+        />
+        <WebsiteStructuredData
+          name="Farhan Ahmed Portfolio"
+          description="Portfolio website of Farhan Ahmed, a Software Engineer and Computer Science student specializing in React, Next.js, and AWS development."
+          url={siteUrl}
+          author="Farhan Ahmed"
+        />
+        <OrganizationStructuredData
+          name="Farhan Ahmed - Software Engineering"
+          url={siteUrl}
+          description="Professional software engineering services specializing in React, Next.js, TypeScript, and AWS development."
+          founder="Farhan Ahmed"
+          location={{
+            addressLocality: 'Des Moines',
+            addressRegion: 'IA',
+            addressCountry: 'US',
+          }}
+          sameAs={[
+            'https://www.linkedin.com/in/farhan-m-ahmed/',
+            'https://github.com/farhan-ahmed1',
+          ]}
+        />
+      </head>
       <body className={cn(inter.variable, 'font-sans antialiased')}>
         <ThemeProvider
           attribute="class"

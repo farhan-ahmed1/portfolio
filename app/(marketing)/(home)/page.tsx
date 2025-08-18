@@ -53,8 +53,10 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400 sm:text-xl"
           >
-            welcome fellow stranger. i see you have laid your eyes upon my humble abode. see for
-            yourself what i have to offer.
+            Hi, I&apos;m Farhan Ahmed, a Computer Science student at Iowa State University with
+            software engineering experience at Principal Financial and EMC Insurance. I specialize
+            in React, TypeScript, and AWS development, building scalable web applications and
+            solving complex technical challenges.
           </motion.p>
 
           {/* Navigation Links */}
@@ -154,6 +156,46 @@ export default function HomePage() {
                 View All Projects
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
+            </div>
+          </motion.div>
+
+          {/* Technical Skills Quick View */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="mt-16 text-center"
+          >
+            <h2 className="mb-6 text-2xl font-bold text-slate-900 dark:text-slate-100">
+              Technical Expertise
+            </h2>
+            <p className="mb-8 text-slate-600 dark:text-slate-400">
+              Farhan Ahmed specializes in modern web development technologies and cloud
+              infrastructure
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {[
+                'React',
+                'TypeScript',
+                'Next.js',
+                'AWS',
+                'Node.js',
+                'Python',
+                'Java',
+                'C#',
+                'PostgreSQL',
+                'Git',
+              ].map((tech, index) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.9 + index * 0.05 }}
+                  className="rounded-lg bg-white/70 px-3 py-1.5 text-sm font-medium text-slate-700 backdrop-blur-sm dark:bg-slate-800/70 dark:text-slate-300"
+                >
+                  {tech}
+                </motion.span>
+              ))}
             </div>
           </motion.div>
         </div>
