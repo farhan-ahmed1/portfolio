@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
-import { RelatedLinks } from '@/components/shared';
+import { RelatedLinks, Breadcrumb } from '@/components/shared';
+import { BreadcrumbStructuredData } from '@/components/seo';
 
 export const metadata: Metadata = {
   title: 'About Farhan Ahmed - Software Engineer & Computer Science Student',
@@ -31,10 +32,23 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
+  
+  // Breadcrumb data
+  const breadcrumbItems = [{ label: 'About' }];
+  const breadcrumbStructuredData = [
+    { name: 'Home', item: siteUrl },
+    { name: 'About', item: `${siteUrl}/about` },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+      <BreadcrumbStructuredData items={breadcrumbStructuredData} />
       <div className="container py-12 pt-24">
         <div className="mx-auto max-w-3xl">
+          {/* Breadcrumb Navigation */}
+          <Breadcrumb items={breadcrumbItems} className="mb-8" />
+          
           <h1 className="mb-8 text-4xl font-bold tracking-tight">About Farhan Ahmed</h1>
 
           <div className="prose prose-lg prose-slate max-w-none dark:prose-invert">

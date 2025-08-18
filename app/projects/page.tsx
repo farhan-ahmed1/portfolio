@@ -1,5 +1,6 @@
 import { getAllProjectsWithMetrics, getFeaturedProjectsWithMetrics } from '@/lib/projects';
-import { ProjectGrid, ProjectFilters, FeaturedProjects } from '@/components';
+import { ProjectGrid, ProjectFilters, FeaturedProjects, Breadcrumb } from '@/components';
+import { BreadcrumbStructuredData } from '@/components/seo';
 import { Suspense } from 'react';
 
 export const metadata = {
@@ -37,9 +38,22 @@ export default async function ProjectsPage() {
     getFeaturedProjectsWithMetrics(),
   ]);
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
+  
+  // Breadcrumb data
+  const breadcrumbItems = [{ label: 'Projects' }];
+  const breadcrumbStructuredData = [
+    { name: 'Home', item: siteUrl },
+    { name: 'Projects', item: `${siteUrl}/projects` },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+      <BreadcrumbStructuredData items={breadcrumbStructuredData} />
       <div className="container py-12 pt-24">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb items={breadcrumbItems} className="mb-8" />
+        
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-4xl font-bold tracking-tight">Projects by Farhan Ahmed</h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">

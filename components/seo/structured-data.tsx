@@ -166,3 +166,84 @@ export function WebsiteStructuredData({
     />
   );
 }
+
+interface BreadcrumbItem {
+  name: string;
+  item: string;
+}
+
+interface BreadcrumbStructuredDataProps {
+  items: BreadcrumbItem[];
+}
+
+export function BreadcrumbStructuredData({ items }: BreadcrumbStructuredDataProps) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.item,
+    })),
+  };
+
+  return (
+    <Script
+      id="breadcrumb-structured-data"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(structuredData),
+      }}
+    />
+  );
+}
+
+interface OrganizationStructuredDataProps {
+  name: string;
+  url: string;
+  logo?: string;
+  description?: string;
+  foundingDate?: string;
+  founder?: string;
+  location?: {
+    addressLocality: string;
+    addressRegion: string;
+    addressCountry: string;
+  };
+  sameAs?: string[];
+}
+
+export function OrganizationStructuredData({
+  name,
+  url,
+  logo,
+  description,
+  foundingDate,
+  founder,
+  location,
+  sameAs = [],
+}: OrganizationStructuredDataProps) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name,
+    url,
+    ...(logo && { logo }),
+    ...(description && { description }),
+    ...(foundingDate && { foundingDate }),
+    ...(founder && { founder: { '@type': 'Person', name: founder } }),
+    ...(location && { address: { '@type': 'PostalAddress', ...location } }),
+    ...(sameAs.length > 0 && { sameAs }),
+  };
+
+  return (
+    <Script
+      id="organization-structured-data"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(structuredData),
+      }}
+    />
+  );
+}

@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { ThemeProvider, Toaster } from '@/components';
-import { PersonStructuredData, WebsiteStructuredData } from '@/components/seo';
+import { PersonStructuredData, WebsiteStructuredData, OrganizationStructuredData } from '@/components/seo';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({
@@ -147,6 +147,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           description="Portfolio website of Farhan Ahmed, a Software Engineer and Computer Science student specializing in React, Next.js, and AWS development."
           url={siteUrl}
           author="Farhan Ahmed"
+        />
+        <OrganizationStructuredData
+          name="Farhan Ahmed - Software Engineering"
+          url={siteUrl}
+          description="Professional software engineering services specializing in React, Next.js, TypeScript, and AWS development."
+          founder="Farhan Ahmed"
+          location={{
+            addressLocality: 'Des Moines',
+            addressRegion: 'IA',
+            addressCountry: 'US',
+          }}
+          sameAs={[
+            'https://linkedin.com/in/farhan-ahmed-profile',
+            'https://github.com/farhan-ahmed1',
+          ]}
         />
       </head>
       <body className={cn(inter.variable, 'font-sans antialiased')}>

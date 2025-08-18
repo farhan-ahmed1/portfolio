@@ -1,7 +1,7 @@
 import { getProjectBySlugWithMetrics, getAllProjects } from '@/lib/projects';
 import { notFound } from 'next/navigation';
-import { MDXContent, ProjectHeader, ProjectMetrics, BackButton } from '@/components';
-import { ProjectStructuredData } from '@/components/seo';
+import { MDXContent, ProjectHeader, ProjectMetrics, BackButton, Breadcrumb } from '@/components';
+import { ProjectStructuredData, BreadcrumbStructuredData } from '@/components/seo';
 
 // Static generation with ISR fallback
 export const revalidate = 3600; // 1 hour
@@ -87,6 +87,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
 
+  // Breadcrumb data for both UI and structured data
+  const breadcrumbItems = [
+    { label: 'Projects', href: '/projects' },
+    { label: project.title },
+  ];
+
+  const breadcrumbStructuredData = [
+    { name: 'Home', item: siteUrl },
+    { name: 'Projects', item: `${siteUrl}/projects` },
+    { name: project.title, item: `${siteUrl}/projects/${project.slug}` },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
       <ProjectStructuredData
@@ -100,8 +112,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         codeRepository={project.links?.github}
         image={`${siteUrl}${project.coverImage}`}
       />
+      <BreadcrumbStructuredData items={breadcrumbStructuredData} />
       <article className="container py-12 pt-24">
         <div className="mx-auto max-w-4xl">
+          {/* Breadcrumb Navigation */}
+          <Breadcrumb items={breadcrumbItems} className="mb-6" />
+
           {/* Back to Projects */}
           <BackButton href="/projects" label="Back to Projects" className="mb-8" />
 
