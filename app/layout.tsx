@@ -63,9 +63,7 @@ export const metadata: Metadata = {
       { url: '/favicons/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' },
       { url: '/favicons/favicon-32x32.svg', sizes: '32x32', type: 'image/svg+xml' },
     ],
-    apple: [
-      { url: '/favicons/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' }
-    ],
+    apple: [{ url: '/favicons/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' }],
   },
   manifest: '/site.webmanifest',
   openGraph: {
@@ -130,7 +128,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        
+
         <PersonStructuredData
           name="Farhan Ahmed"
           jobTitle="Software Engineer & Computer Science Student"
