@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   verification: {
-    google: 'your-google-verification-code', // Add when you set up Google Search Console
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
     // bing: 'your-bing-verification-code', // Add when you set up Bing Webmaster Tools
   },
   formatDetection: {
