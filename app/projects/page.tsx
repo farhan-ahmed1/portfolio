@@ -39,7 +39,7 @@ export default async function ProjectsPage() {
   ]);
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
-  
+
   // Breadcrumb data
   const breadcrumbItems = [{ label: 'Projects' }];
   const breadcrumbStructuredData = [
@@ -53,7 +53,7 @@ export default async function ProjectsPage() {
       <div className="container py-12 pt-24">
         {/* Breadcrumb Navigation */}
         <Breadcrumb items={breadcrumbItems} className="mb-8" />
-        
+
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-4xl font-bold tracking-tight">Projects by Farhan Ahmed</h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">

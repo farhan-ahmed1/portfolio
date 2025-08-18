@@ -6,13 +6,7 @@
 import { getAllProjects } from '@/lib/projects';
 
 // Static routes that should always be pre-rendered
-export const STATIC_ROUTES = [
-  '/',
-  '/about',
-  '/projects',
-  '/resume',
-  '/contact',
-] as const;
+export const STATIC_ROUTES = ['/', '/about', '/projects', '/resume', '/contact'] as const;
 
 // Dynamic route generators
 export async function generateProjectRoutes() {
@@ -60,5 +54,5 @@ export const ROUTE_METADATA = {
   },
 } as const;
 
-export type StaticRoute = typeof STATIC_ROUTES[number];
+export type StaticRoute = (typeof STATIC_ROUTES)[number];
 export type RouteMetadata = typeof ROUTE_METADATA;

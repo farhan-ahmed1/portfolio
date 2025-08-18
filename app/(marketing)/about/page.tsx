@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
-  
+
   // Breadcrumb data
   const breadcrumbItems = [{ label: 'About' }];
   const breadcrumbStructuredData = [
@@ -48,7 +48,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl">
           {/* Breadcrumb Navigation */}
           <Breadcrumb items={breadcrumbItems} className="mb-8" />
-          
+
           <h1 className="mb-8 text-4xl font-bold tracking-tight">About Farhan Ahmed</h1>
 
           <div className="prose prose-lg prose-slate max-w-none dark:prose-invert">

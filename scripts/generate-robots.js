@@ -73,20 +73,19 @@ Disallow: /`;
 async function writeRobotsTxt() {
   try {
     console.log('🤖 Generating robots.txt...');
-    
+
     const robotsContent = generateRobotsTxt();
     const robotsPath = path.join(process.cwd(), 'public', 'robots.txt');
-    
+
     fs.writeFileSync(robotsPath, robotsContent, 'utf8');
-    
+
     console.log('✅ robots.txt generated successfully');
     console.log(`📁 Saved to: ${robotsPath}`);
-    
+
     return {
       success: true,
       path: robotsPath,
     };
-    
   } catch (error) {
     console.error('❌ Failed to generate robots.txt:', error);
     return {
@@ -98,7 +97,7 @@ async function writeRobotsTxt() {
 
 // Run if called directly
 if (require.main === module) {
-  writeRobotsTxt().then(result => {
+  writeRobotsTxt().then((result) => {
     if (result.success) {
       console.log('🎉 robots.txt generation completed!');
       process.exit(0);

@@ -23,24 +23,30 @@ function formatDate(date: Date | string) {
   return new Date(date).toISOString().split('T')[0];
 }
 
-function generateSitemapXML(urls: Array<{
-  loc: string;
-  lastmod: string;
-  changefreq: string;
-  priority: string;
-}>) {
+function generateSitemapXML(
+  urls: Array<{
+    loc: string;
+    lastmod: string;
+    changefreq: string;
+    priority: string;
+  }>
+) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${urls.map(url => `  <url>
+${urls
+  .map(
+    (url) => `  <url>
     <loc>${url.loc}</loc>
     <lastmod>${url.lastmod}</lastmod>
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
-  </url>`).join('\n')}
+  </url>`
+  )
+  .join('\n')}
 </urlset>`;
 }
 
@@ -56,7 +62,7 @@ export async function GET() {
     const currentDate = formatDate(new Date());
 
     // Add static routes
-    staticRoutes.forEach(route => {
+    staticRoutes.forEach((route) => {
       urls.push({
         loc: `${SITE_URL}${route.path}`,
         lastmod: currentDate,
@@ -68,8 +74,8 @@ export async function GET() {
     // Add dynamic project routes
     try {
       const projects = await getAllProjects();
-      
-      projects.forEach(project => {
+
+      projects.forEach((project) => {
         const projectDate = project.date ? formatDate(project.date) : currentDate;
         urls.push({
           loc: `${SITE_URL}/projects/${project.slug}`,

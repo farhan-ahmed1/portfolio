@@ -52,7 +52,7 @@ module.exports = {
       const projectsPath = path.join(process.cwd(), '.velite', 'projects.json');
       if (fs.existsSync(projectsPath)) {
         const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
-        
+
         projectPaths = await Promise.all(
           projects.map(async (project) => {
             return config.transform(config, `/projects/${project.slug}`, {

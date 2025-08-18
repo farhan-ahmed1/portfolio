@@ -16,10 +16,10 @@ interface ProjectPageProps {
 export async function generateStaticParams() {
   try {
     const projects = await getAllProjects();
-    
+
     // Log for build-time debugging
     console.log(`[generateStaticParams] Generating static params for ${projects.length} projects`);
-    
+
     return projects.map((project) => ({
       slug: project.slug,
     }));
@@ -97,10 +97,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
 
   // Breadcrumb data for both UI and structured data
-  const breadcrumbItems = [
-    { label: 'Projects', href: '/projects' },
-    { label: project.title },
-  ];
+  const breadcrumbItems = [{ label: 'Projects', href: '/projects' }, { label: project.title }];
 
   const breadcrumbStructuredData = [
     { name: 'Home', item: siteUrl },

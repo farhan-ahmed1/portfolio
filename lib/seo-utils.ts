@@ -7,14 +7,9 @@
 export function preloadCriticalRoutes() {
   if (typeof window === 'undefined') return;
 
-  const criticalRoutes = [
-    '/projects',
-    '/about',
-    '/contact',
-    '/resume',
-  ];
+  const criticalRoutes = ['/projects', '/about', '/contact', '/resume'];
 
-  criticalRoutes.forEach(route => {
+  criticalRoutes.forEach((route) => {
     const link = document.createElement('link');
     link.rel = 'prefetch';
     link.href = route;
@@ -25,7 +20,7 @@ export function preloadCriticalRoutes() {
 // Generate structured data for better crawling
 export function generateWebsiteStructuredData() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -36,10 +31,7 @@ export function generateWebsiteStructuredData() {
       '@type': 'Person',
       name: 'Farhan Ahmed',
       url: siteUrl,
-      sameAs: [
-        'https://github.com/farhan-ahmed1',
-        'https://www.linkedin.com/in/farhan-m-ahmed/',
-      ],
+      sameAs: ['https://github.com/farhan-ahmed1', 'https://www.linkedin.com/in/farhan-m-ahmed/'],
     },
     mainEntity: {
       '@type': 'Person',
@@ -62,7 +54,7 @@ export function generateWebsiteStructuredData() {
 // Generate organization structured data
 export function generateOrganizationStructuredData() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -72,10 +64,7 @@ export function generateOrganizationStructuredData() {
     description: 'Software Engineer & Full-Stack Developer',
     url: siteUrl,
     image: `${siteUrl}/images/profile.jpg`,
-    sameAs: [
-      'https://github.com/farhan-ahmed1',
-      'https://www.linkedin.com/in/farhan-m-ahmed/',
-    ],
+    sameAs: ['https://github.com/farhan-ahmed1', 'https://www.linkedin.com/in/farhan-m-ahmed/'],
     jobTitle: 'Software Engineer',
     worksFor: {
       '@type': 'Organization',
@@ -104,7 +93,7 @@ export function generateResourceHints(options?: {
 
   // DNS prefetch for external domains
   if (options?.externalDomains) {
-    options.externalDomains.forEach(domain => {
+    options.externalDomains.forEach((domain) => {
       hints.push({ rel: 'dns-prefetch', href: `//${domain}` });
     });
   }
@@ -113,12 +102,12 @@ export function generateResourceHints(options?: {
   if (options?.fonts) {
     hints.push({ rel: 'preconnect', href: 'https://fonts.googleapis.com' });
     hints.push({ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' });
-    hints.push({ 
-      rel: 'preload', 
-      href: '/fonts/inter-var.woff2', 
-      as: 'font', 
-      type: 'font/woff2', 
-      crossOrigin: 'anonymous' 
+    hints.push({
+      rel: 'preload',
+      href: '/fonts/inter-var.woff2',
+      as: 'font',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
     });
   }
 

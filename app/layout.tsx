@@ -3,7 +3,11 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { ThemeProvider, Toaster } from '@/components';
-import { PersonStructuredData, WebsiteStructuredData, OrganizationStructuredData } from '@/components/seo';
+import {
+  PersonStructuredData,
+  WebsiteStructuredData,
+  OrganizationStructuredData,
+} from '@/components/seo';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({

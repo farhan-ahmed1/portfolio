@@ -30,24 +30,28 @@ function formatDate(date) {
 function generateUrlSet(urls) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(url => `  <url>
+${urls
+  .map(
+    (url) => `  <url>
     <loc>${url.loc}</loc>
     <lastmod>${url.lastmod}</lastmod>
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
-  </url>`).join('\n')}
+  </url>`
+  )
+  .join('\n')}
 </urlset>`;
 }
 
 async function generateSitemap() {
   try {
     console.log('🚀 Generating comprehensive sitemap...');
-    
+
     const urls = [];
     const currentDate = formatDate(new Date());
 
     // Add static routes
-    staticRoutes.forEach(route => {
+    staticRoutes.forEach((route) => {
       urls.push({
         loc: `${SITE_URL}${route.path}`,
         lastmod: currentDate,
@@ -59,11 +63,11 @@ async function generateSitemap() {
     // Load and add project pages
     try {
       const projectsPath = path.join(process.cwd(), '.velite', 'projects.json');
-      
+
       if (fs.existsSync(projectsPath)) {
         const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf8'));
-        
-        projects.forEach(project => {
+
+        projects.forEach((project) => {
           const projectDate = project.date ? formatDate(project.date) : currentDate;
           urls.push({
             loc: `${SITE_URL}/projects/${project.slug}`,
@@ -72,7 +76,7 @@ async function generateSitemap() {
             priority: '0.8',
           });
         });
-        
+
         console.log(`✅ Added ${projects.length} project pages to sitemap`);
       } else {
         console.warn('⚠️  Projects data not found, skipping project pages');
@@ -83,14 +87,14 @@ async function generateSitemap() {
 
     // Generate sitemap XML
     const sitemapXml = generateUrlSet(urls);
-    
+
     // Write sitemap to public directory
     const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
     fs.writeFileSync(sitemapPath, sitemapXml, 'utf8');
-    
+
     console.log(`✅ Sitemap generated with ${urls.length} URLs`);
     console.log(`📁 Sitemap saved to: ${sitemapPath}`);
-    
+
     // Generate sitemap index if needed (for large sites)
     if (urls.length > SITEMAP_INDEX_THRESHOLD) {
       console.log('📊 Large sitemap detected, consider implementing sitemap index');
@@ -101,7 +105,6 @@ async function generateSitemap() {
       urlCount: urls.length,
       path: sitemapPath,
     };
-    
   } catch (error) {
     console.error('❌ Failed to generate sitemap:', error);
     return {
@@ -113,7 +116,7 @@ async function generateSitemap() {
 
 // Run if called directly
 if (require.main === module) {
-  generateSitemap().then(result => {
+  generateSitemap().then((result) => {
     if (result.success) {
       console.log('🎉 Sitemap generation completed successfully!');
       process.exit(0);
