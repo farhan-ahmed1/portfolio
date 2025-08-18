@@ -40,7 +40,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/in/farhan-m-ahmed"
+                  href="https://www.linkedin.com/in/farhan-m-ahmed/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

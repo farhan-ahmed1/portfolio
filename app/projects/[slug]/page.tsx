@@ -14,11 +14,20 @@ interface ProjectPageProps {
 
 // Generate static params for all projects at build time
 export async function generateStaticParams() {
-  const projects = await getAllProjects();
-  
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+  try {
+    const projects = await getAllProjects();
+    
+    // Log for build-time debugging
+    console.log(`[generateStaticParams] Generating static params for ${projects.length} projects`);
+    
+    return projects.map((project) => ({
+      slug: project.slug,
+    }));
+  } catch (error) {
+    console.error('[generateStaticParams] Failed to generate static params:', error);
+    // Return empty array to prevent build failure
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: ProjectPageProps) {

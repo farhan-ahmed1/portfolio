@@ -17,7 +17,10 @@
     "db:migrate": "dotenv -e .env.local -- prisma migrate dev",
     "db:studio": "dotenv -e .env.local -- prisma studio",
     "db:seed": "dotenv -e .env.local -- tsx prisma/seed.ts",
-    "postbuild": "next-sitemap"
+    "seo:build": "node scripts/seo-build.js",
+    "seo:sitemap": "node scripts/generate-sitemap.js",
+    "seo:robots": "node scripts/generate-robots.js",
+    "postbuild": "npm run seo:build && next-sitemap"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

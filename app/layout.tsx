@@ -127,7 +127,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           image={`${siteUrl}/og-image`}
           sameAs={[
             // Add your social media profiles - update LinkedIn URL once optimized
-            'https://linkedin.com/in/farhan-ahmed-profile', // Update with your actual optimized LinkedIn URL
+            'https://www.linkedin.com/in/farhan-m-ahmed/', // Update with your actual optimized LinkedIn URL
             'https://github.com/farhan-ahmed1', // Your GitHub
             // 'https://twitter.com/farhanahmed', // Add if you have Twitter
           ]}
@@ -159,7 +159,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             addressCountry: 'US',
           }}
           sameAs={[
-            'https://linkedin.com/in/farhan-ahmed-profile',
+            'https://www.linkedin.com/in/farhan-m-ahmed/',
             'https://github.com/farhan-ahmed1',
           ]}
         />
