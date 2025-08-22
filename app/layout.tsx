@@ -9,6 +9,7 @@ import {
   OrganizationStructuredData,
 } from '@/components/seo';
 import { cn } from '@/lib/utils';
+import { generateRobotsMetadata } from '@/lib/seo-robots';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -91,17 +92,11 @@ export const metadata: Metadata = {
     images: ['/og-image'],
     creator: '@farhanahmed', // Add your Twitter handle if you have one
   },
-  robots: {
+  // Use the centralized robots configuration
+  ...generateRobotsMetadata({
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
+  }),
   alternates: {
     canonical: '/',
   },
