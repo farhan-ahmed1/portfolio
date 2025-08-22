@@ -20,7 +20,11 @@
     "seo:build": "node scripts/seo-build.js",
     "seo:sitemap": "node scripts/generate-sitemap.js",
     "seo:robots": "node scripts/generate-robots.js",
-    "postbuild": "npm run seo:build && next-sitemap"
+    "seo:validate": "node scripts/validate-sitemap.js",
+    "seo:verify": "node scripts/verify-seo.js",
+    "seo:check": "node scripts/pre-deploy-check.js",
+    "prebuild": "npm run seo:check",
+    "postbuild": "npm run seo:build"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

@@ -61,28 +61,39 @@ export async function GET() {
 
     const currentDate = formatDate(new Date());
 
-    // Add static routes
+    // Add static routes with proper URL validation
     staticRoutes.forEach((route) => {
-      urls.push({
-        loc: `${SITE_URL}${route.path}`,
-        lastmod: currentDate,
-        changefreq: route.changefreq,
-        priority: route.priority,
-      });
+      // Ensure path doesn't contain invalid characters
+      const cleanPath = route.path.replace(/[^\w\-\/]/g, '');
+      if (cleanPath === route.path) {
+        urls.push({
+          loc: `${SITE_URL}${route.path}`,
+          lastmod: currentDate,
+          changefreq: route.changefreq,
+          priority: route.priority,
+        });
+      } else {
+        console.warn(`Skipping invalid route path: ${route.path}`);
+      }
     });
 
-    // Add dynamic project routes
+    // Add dynamic project routes with proper validation
     try {
       const projects = await getAllProjects();
 
       projects.forEach((project) => {
-        const projectDate = project.date ? formatDate(project.date) : currentDate;
-        urls.push({
-          loc: `${SITE_URL}/projects/${project.slug}`,
-          lastmod: projectDate,
-          changefreq: 'monthly',
-          priority: '0.8',
-        });
+        // Validate slug before adding to sitemap
+        if (project.slug && /^[a-z0-9\-]+$/.test(project.slug)) {
+          const projectDate = project.date ? formatDate(project.date) : currentDate;
+          urls.push({
+            loc: `${SITE_URL}/projects/${encodeURIComponent(project.slug)}`,
+            lastmod: projectDate,
+            changefreq: 'monthly',
+            priority: '0.8',
+          });
+        } else {
+          console.warn(`Skipping project with invalid slug: ${project.slug}`);
+        }
       });
     } catch (error) {
       console.error('Failed to load projects for sitemap:', error);

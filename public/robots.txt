@@ -1,11 +1,54 @@
-# *
+# Robots.txt for https://farhan-ahmed.com
+# Generated on 2025-08-22T20:36:56.367Z
+
 User-agent: *
 Allow: /
+
+# Disallow API routes and admin areas
 Disallow: /api/
 Disallow: /admin/
+Disallow: /_next/
+Disallow: /vercel.svg
+Disallow: /next.svg
 
-# Host
-Host: https://farhan-ahmed.com
+# Allow specific crawling patterns
+Allow: /api/og/
 
-# Sitemaps
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://farhan-ahmed.com/sitemap.xml
+
+# Popular search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Block unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

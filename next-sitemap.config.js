@@ -5,9 +5,9 @@ const path = require('path');
 module.exports = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com',
   generateRobotsTxt: true,
-  exclude: ['/api/*', '/admin/*'],
-  changefreq: 'weekly',
-  priority: 0.7,
+  exclude: ['/api/*', '/admin/*', '/og-image*', '/_next/*'],
+  changefreq: 'monthly', // Default for most pages
+  priority: 0.8, // Default priority
   sitemapSize: 5000,
   generateIndexSitemap: false,
   robotsTxtOptions: {
