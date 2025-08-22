@@ -10,9 +10,9 @@ const { verifySEOImplementation } = require('./verify-seo');
 
 async function preDeployCheck() {
   console.log('🚀 Running pre-deployment SEO checks...\n');
-  
+
   let allChecksPass = true;
-  
+
   // Run SEO verification
   console.log('1️⃣ Running SEO implementation verification...');
   try {
@@ -27,9 +27,9 @@ async function preDeployCheck() {
     console.error('❌ SEO verification error:', error.message);
     allChecksPass = false;
   }
-  
+
   console.log('\n' + '='.repeat(50) + '\n');
-  
+
   // Run sitemap validation
   console.log('2️⃣ Running sitemap validation...');
   try {
@@ -44,9 +44,9 @@ async function preDeployCheck() {
     console.error('❌ Sitemap validation error:', error.message);
     allChecksPass = false;
   }
-  
+
   console.log('\n' + '='.repeat(50) + '\n');
-  
+
   // Final result
   if (allChecksPass) {
     console.log('🎉 All pre-deployment checks passed!');
@@ -67,16 +67,16 @@ async function preDeployCheck() {
     console.log('   3. Ensure robots.txt allows crawling');
     console.log('   4. Verify metadata has index: true');
   }
-  
+
   return allChecksPass;
 }
 
 if (require.main === module) {
   preDeployCheck()
-    .then(success => {
+    .then((success) => {
       process.exit(success ? 0 : 1);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('💥 Pre-deployment check failed:', error);
       process.exit(1);
     });

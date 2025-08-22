@@ -61,14 +61,14 @@ export function validateRobotsConfig(metadata: Metadata): {
   issues: string[];
 } {
   const issues: string[] = [];
-  
+
   if (!metadata.robots) {
     issues.push('No robots metadata found');
     return { isValid: false, issues };
   }
 
   const robots = metadata.robots;
-  
+
   if (typeof robots === 'string') {
     // If robots is a string, it should not contain noindex for most pages
     if (robots.includes('noindex')) {
@@ -79,7 +79,7 @@ export function validateRobotsConfig(metadata: Metadata): {
     if (robots.index === false) {
       issues.push('Page has index: false');
     }
-    
+
     if (robots.follow === false) {
       issues.push('Page has follow: false');
     }

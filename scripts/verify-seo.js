@@ -12,7 +12,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
 
 function checkAppDirectory() {
   console.log('🔍 Checking app directory structure...');
-  
+
   const appDir = path.join(process.cwd(), 'app');
   if (!fs.existsSync(appDir)) {
     console.log('❌ App directory not found');
@@ -32,38 +32,39 @@ function checkAppDirectory() {
 
 function checkMetadataConfiguration() {
   console.log('\n🔍 Checking metadata configuration...');
-  
+
   const layoutPath = path.join(process.cwd(), 'app', 'layout.tsx');
-  
+
   try {
     const layoutContent = fs.readFileSync(layoutPath, 'utf8');
-    
+
     const checks = [
       {
         name: 'Has metadata export',
         check: () => layoutContent.includes('export const metadata'),
-        fix: 'Add metadata export to app/layout.tsx'
+        fix: 'Add metadata export to app/layout.tsx',
       },
       {
         name: 'Has robots configuration',
-        check: () => layoutContent.includes('robots:') || layoutContent.includes('generateRobotsMetadata'),
-        fix: 'Add robots configuration to metadata'
+        check: () =>
+          layoutContent.includes('robots:') || layoutContent.includes('generateRobotsMetadata'),
+        fix: 'Add robots configuration to metadata',
       },
       {
         name: 'Has proper indexing enabled',
         check: () => layoutContent.includes('index: true'),
-        fix: 'Set index: true in robots configuration'
+        fix: 'Set index: true in robots configuration',
       },
       {
         name: 'Has metadataBase',
         check: () => layoutContent.includes('metadataBase:'),
-        fix: 'Add metadataBase to metadata for proper URL resolution'
+        fix: 'Add metadataBase to metadata for proper URL resolution',
       },
       {
         name: 'No noindex directives',
         check: () => !layoutContent.includes('noindex') && !layoutContent.includes('index: false'),
-        fix: 'Remove any noindex directives or index: false settings'
-      }
+        fix: 'Remove any noindex directives or index: false settings',
+      },
     ];
 
     let allPassed = true;
@@ -85,9 +86,9 @@ function checkMetadataConfiguration() {
 
 function checkSitemapConfiguration() {
   console.log('\n🔍 Checking sitemap configuration...');
-  
+
   const sitemapPath = path.join(process.cwd(), 'app', 'api', 'sitemap', 'route.ts');
-  
+
   if (!fs.existsSync(sitemapPath)) {
     console.log('❌ Sitemap route not found at app/api/sitemap/route.ts');
     return false;
@@ -95,23 +96,26 @@ function checkSitemapConfiguration() {
 
   try {
     const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
-    
+
     const checks = [
       {
         name: 'Has URL validation',
-        check: () => sitemapContent.includes('encodeURIComponent') || sitemapContent.includes('cleanPath'),
-        fix: 'Add URL validation to prevent invalid characters in sitemap'
+        check: () =>
+          sitemapContent.includes('encodeURIComponent') || sitemapContent.includes('cleanPath'),
+        fix: 'Add URL validation to prevent invalid characters in sitemap',
       },
       {
         name: 'Has error handling',
         check: () => sitemapContent.includes('try') && sitemapContent.includes('catch'),
-        fix: 'Add proper error handling for sitemap generation'
+        fix: 'Add proper error handling for sitemap generation',
       },
       {
         name: 'No template URLs',
-        check: () => !sitemapContent.includes('{search_term_string}') && !sitemapContent.includes('potentialAction'),
-        fix: 'Remove search template URLs that cause indexing issues'
-      }
+        check: () =>
+          !sitemapContent.includes('{search_term_string}') &&
+          !sitemapContent.includes('potentialAction'),
+        fix: 'Remove search template URLs that cause indexing issues',
+      },
     ];
 
     let allPassed = true;
@@ -133,9 +137,9 @@ function checkSitemapConfiguration() {
 
 function checkRobotsConfiguration() {
   console.log('\n🔍 Checking robots.txt configuration...');
-  
+
   const robotsPath = path.join(process.cwd(), 'public', 'robots.txt');
-  
+
   if (!fs.existsSync(robotsPath)) {
     console.log('❌ robots.txt not found in public directory');
     return false;
@@ -143,23 +147,23 @@ function checkRobotsConfiguration() {
 
   try {
     const robotsContent = fs.readFileSync(robotsPath, 'utf8');
-    
+
     const checks = [
       {
         name: 'Allows all user agents',
         check: () => robotsContent.includes('User-agent: *'),
-        fix: 'Add "User-agent: *" to robots.txt'
+        fix: 'Add "User-agent: *" to robots.txt',
       },
       {
         name: 'Allows crawling',
         check: () => robotsContent.includes('Allow: /') || !robotsContent.includes('Disallow: /'),
-        fix: 'Ensure robots.txt allows crawling of main content'
+        fix: 'Ensure robots.txt allows crawling of main content',
       },
       {
         name: 'Has sitemap reference',
         check: () => robotsContent.includes('Sitemap:'),
-        fix: 'Add sitemap URL to robots.txt'
-      }
+        fix: 'Add sitemap URL to robots.txt',
+      },
     ];
 
     let allPassed = true;
@@ -181,9 +185,9 @@ function checkRobotsConfiguration() {
 
 function checkStructuredDataConfiguration() {
   console.log('\n🔍 Checking structured data configuration...');
-  
+
   const structuredDataPath = path.join(process.cwd(), 'components', 'seo', 'structured-data.tsx');
-  
+
   if (!fs.existsSync(structuredDataPath)) {
     console.log('❌ Structured data component not found');
     return false;
@@ -191,23 +195,23 @@ function checkStructuredDataConfiguration() {
 
   try {
     const structuredDataContent = fs.readFileSync(structuredDataPath, 'utf8');
-    
+
     const checks = [
       {
         name: 'No search template URLs',
         check: () => !structuredDataContent.includes('{search_term_string}'),
-        fix: 'Remove potentialAction with search template that causes indexing issues'
+        fix: 'Remove potentialAction with search template that causes indexing issues',
       },
       {
         name: 'Has Person schema',
         check: () => structuredDataContent.includes("'@type': 'Person'"),
-        fix: 'Add Person structured data for better SEO'
+        fix: 'Add Person structured data for better SEO',
       },
       {
         name: 'Has Website schema',
         check: () => structuredDataContent.includes("'@type': 'WebSite'"),
-        fix: 'Add WebSite structured data for better SEO'
-      }
+        fix: 'Add WebSite structured data for better SEO',
+      },
     ];
 
     let allPassed = true;
@@ -229,7 +233,7 @@ function checkStructuredDataConfiguration() {
 
 async function verifySEOImplementation() {
   console.log('🚀 Starting SEO verification...\n');
-  
+
   const checks = [
     { name: 'App Directory', fn: checkAppDirectory },
     { name: 'Metadata Configuration', fn: checkMetadataConfiguration },
@@ -239,7 +243,7 @@ async function verifySEOImplementation() {
   ];
 
   const results = [];
-  
+
   for (const { name, fn } of checks) {
     try {
       const passed = await fn();
@@ -252,7 +256,7 @@ async function verifySEOImplementation() {
 
   console.log('\n📊 SEO Verification Summary:');
   console.log('================================');
-  
+
   let allPassed = true;
   results.forEach(({ name, passed }) => {
     const status = passed ? '✅ PASSED' : '❌ FAILED';
@@ -261,7 +265,7 @@ async function verifySEOImplementation() {
   });
 
   console.log('================================');
-  
+
   if (allPassed) {
     console.log('🎉 All SEO checks passed!');
     console.log('\n� Next steps:');
@@ -284,11 +288,10 @@ if (require.main === module) {
     .then(({ success }) => {
       process.exit(success ? 0 : 1);
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('💥 SEO verification failed:', error);
       process.exit(1);
     });
 }
 
 module.exports = { verifySEOImplementation };
-
