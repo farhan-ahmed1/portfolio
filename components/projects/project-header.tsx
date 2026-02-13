@@ -36,7 +36,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
       </motion.div>
 
       {/* Title, Role, Date and Action Buttons */}
-      <div className="mb-4 flex flex-col gap-4 border-b border-dotted border-slate-300/80 pb-4 md:flex-row md:items-start md:justify-between dark:border-slate-700/80">
+      <div className="mb-4 flex flex-col gap-4 border-b border-dotted border-slate-300/80 pb-4 dark:border-slate-700/80 md:flex-row md:items-start md:justify-between">
         <motion.div
           className="flex-1"
           initial={{ opacity: 0, x: -20 }}

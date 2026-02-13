@@ -49,7 +49,7 @@ export default async function ProjectsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#fafaf8] text-slate-900 dark:bg-[#0d0f12] dark:text-slate-100 bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.12)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(226,232,240,0.12)_1px,transparent_0)] [background-size:24px_24px]">
+    <div className="min-h-screen bg-[#fafaf8] bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.12)_1px,transparent_0)] text-slate-900 [background-size:24px_24px] dark:bg-[#0d0f12] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(226,232,240,0.12)_1px,transparent_0)] dark:text-slate-100">
       <BreadcrumbStructuredData items={breadcrumbStructuredData} />
       <div className="container py-12 pt-24 font-mono">
         {/* Breadcrumb Navigation */}

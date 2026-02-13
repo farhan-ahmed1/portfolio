@@ -25,8 +25,10 @@ const isStrongOnlyParagraph = (children: React.ReactNode) => {
   if (items.length !== 1) return false;
   const onlyChild = items[0];
 
-  return React.isValidElement(onlyChild) &&
-    (onlyChild.type === 'strong' || onlyChild.type === StrongText);
+  return (
+    React.isValidElement(onlyChild) &&
+    (onlyChild.type === 'strong' || onlyChild.type === StrongText)
+  );
 };
 
 // Enhanced MDX components with animations and better styling
@@ -119,7 +121,7 @@ const mdxComponents = {
     const childrenArray = React.Children.toArray(children);
     return (
       <motion.ul
-        className="mb-5 mt-2 ml-6 border-l-2 border-dotted border-slate-300/80 pl-8 dark:border-slate-700/80"
+        className="mb-5 ml-6 mt-2 border-l-2 border-dotted border-slate-300/80 pl-8 dark:border-slate-700/80"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, staggerChildren: 0.1 }}
@@ -141,7 +143,7 @@ const mdxComponents = {
     const childrenArray = React.Children.toArray(children);
     return (
       <motion.ol
-        className="mb-5 mt-2 ml-6 border-l-2 border-dotted border-slate-300/80 pl-8 dark:border-slate-700/80"
+        className="mb-5 ml-6 mt-2 border-l-2 border-dotted border-slate-300/80 pl-8 dark:border-slate-700/80"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, staggerChildren: 0.1 }}
@@ -225,8 +227,8 @@ const mdxComponents = {
     </a>
   ),
   img: ({ src, alt, ...props }: React.HTMLProps<HTMLImageElement>) => (
-      <motion.div
-        className="mb-6 overflow-hidden rounded-none border-2 border-dotted border-slate-300/80 dark:border-slate-700/80"
+    <motion.div
+      className="mb-6 overflow-hidden rounded-none border-2 border-dotted border-slate-300/80 dark:border-slate-700/80"
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
@@ -235,7 +237,7 @@ const mdxComponents = {
       <img
         src={src}
         alt={alt}
-          className="w-full transition-transform duration-300 hover:scale-[1.01]"
+        className="w-full transition-transform duration-300 hover:scale-[1.01]"
         loading="lazy"
         {...props}
       />

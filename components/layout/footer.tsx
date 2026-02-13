@@ -60,8 +60,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
                 >
-                  <Twitter className="h-4 w-4" />
-                  X
+                  <Twitter className="h-4 w-4" />X
                 </a>
               </li>
             </ul>
