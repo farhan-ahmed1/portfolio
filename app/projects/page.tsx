@@ -39,6 +39,7 @@ export default async function ProjectsPage() {
   ]);
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://farhan-ahmed.com';
+  const currentYear = new Date().getFullYear();
 
   // Breadcrumb data
   const breadcrumbItems = [{ label: 'Projects' }];
@@ -48,19 +49,21 @@ export default async function ProjectsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-[#fafaf8] bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.12)_1px,transparent_0)] text-slate-900 [background-size:24px_24px] dark:bg-[#0d0f12] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(226,232,240,0.12)_1px,transparent_0)] dark:text-slate-100">
       <BreadcrumbStructuredData items={breadcrumbStructuredData} />
-      <div className="container py-12 pt-24">
+      <div className="container py-12 pt-24 font-mono">
         {/* Breadcrumb Navigation */}
         <Breadcrumb items={breadcrumbItems} className="mb-8" />
 
-        <div className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight">Projects by Farhan Ahmed</h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            A showcase of Farhan Ahmed&apos;s software engineering projects, from mobile
-            applications to cloud infrastructure solutions. Each project demonstrates
-            problem-solving skills and technical expertise developed through experience at Principal
-            Financial, EMC Insurance, and studies at Iowa State University.
+        <div className="mb-12 border-b-2 border-dotted border-slate-300/80 pb-8 text-left dark:border-slate-700/80">
+          <p className="text-xs uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            Selected Work / 2021-{currentYear}
+          </p>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight">Projects by Farhan Ahmed</h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+            Software engineering projects with a focus on real-world constraints: performance,
+            reliability, and developer experience. Each entry documents the decision-making and
+            technical trade-offs behind the build.
           </p>
         </div>
 

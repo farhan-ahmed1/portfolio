@@ -83,7 +83,7 @@ export function ProjectMetrics({ slug, initialMetrics }: ProjectMetricsProps) {
 
   if (isLoading) {
     return (
-      <div className="mb-6 flex items-center gap-4 border-l-2 border-accent/20 pl-4 text-sm text-muted-foreground">
+      <div className="mb-6 flex flex-wrap items-center gap-4 border-l-2 border-dotted border-slate-300/80 pl-4 text-xs text-slate-600 dark:border-slate-700/80 dark:text-slate-400">
         <div className="flex items-center gap-2">
           <Eye className="h-4 w-4" />
           <span>Loading...</span>
@@ -97,7 +97,7 @@ export function ProjectMetrics({ slug, initialMetrics }: ProjectMetricsProps) {
   }
 
   return (
-    <div className="mb-6 flex items-center gap-4 border-l-2 border-accent/20 pl-4 text-sm text-muted-foreground">
+    <div className="mb-6 flex flex-wrap items-center gap-4 border-l-2 border-dotted border-slate-300/80 pl-4 text-xs text-slate-600 dark:border-slate-700/80 dark:text-slate-400">
       <div className="flex items-center gap-2">
         <Eye className="h-4 w-4" />
         <span>{metrics.views.toLocaleString()} views</span>
@@ -105,8 +105,8 @@ export function ProjectMetrics({ slug, initialMetrics }: ProjectMetricsProps) {
 
       <button
         onClick={handleLike}
-        className={`focus-ring flex items-center gap-2 rounded-sm transition-colors hover:text-red-500 ${
-          isLiked ? 'text-red-500' : ''
+        className={`focus-ring flex items-center gap-2 border border-dotted border-slate-400/80 px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors hover:border-red-500 hover:text-red-500 dark:border-slate-600/80 ${
+          isLiked ? 'border-red-500 text-red-500' : 'text-slate-600 dark:text-slate-400'
         }`}
         disabled={isLiked}
         aria-label={isLiked ? 'Already liked' : 'Like this project'}

@@ -33,8 +33,10 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
   };
 
   return (
-    <div className="mb-8">
-      <h3 className="mb-4 text-sm font-medium text-muted-foreground">Filter by Technology</h3>
+    <div className="mb-10">
+      <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+        Filter by Focus
+      </h3>
       <div className="flex flex-wrap gap-2">
         {filters.map((filter) => {
           const isActive = activeFilters.includes(filter);
@@ -42,10 +44,10 @@ export function ProjectFilters({ onFilterChange }: ProjectFiltersProps) {
             <button
               key={filter}
               onClick={() => handleFilterClick(filter)}
-              className={`focus-ring rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+              className={`focus-ring rounded-none border-2 border-dotted px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all ${
                 isActive
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                  ? 'border-slate-900 bg-slate-900 text-[#fafaf8] dark:border-slate-100 dark:bg-slate-100 dark:text-slate-900'
+                  : 'border-slate-400/80 bg-transparent text-slate-600 hover:border-slate-900 hover:text-slate-900 dark:border-slate-600/80 dark:text-slate-400 dark:hover:border-slate-200 dark:hover:text-slate-100'
               }`}
             >
               {filter}

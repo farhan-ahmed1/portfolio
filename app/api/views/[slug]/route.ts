@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 
 export const runtime = 'nodejs';
@@ -42,28 +43,37 @@ export async function POST(
 
     // Create the interaction record and update metric in a transaction
     const result = await prisma.$transaction(async (tx) => {
-      // Record the interaction
-      await tx.interaction.create({
-        data: {
-          ip: userIP,
-          slug,
-          type: 'VIEW',
-        },
-      });
+      try {
+        // Record the interaction
+        await tx.interaction.create({
+          data: {
+            ip: userIP,
+            slug,
+            type: 'VIEW',
+          },
+        });
 
-      // Update the metric
-      const metric = await tx.metric.upsert({
-        where: { slug },
-        update: { views: { increment: 1 } },
-        create: { slug, views: 1, likes: 0 },
-      });
+        // Update the metric
+        const metric = await tx.metric.upsert({
+          where: { slug },
+          update: { views: { increment: 1 } },
+          create: { slug, views: 1, likes: 0 },
+        });
 
-      return metric;
+        return { metric, rateLimited: false };
+      } catch (error) {
+        if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002') {
+          const metric = await tx.metric.findUnique({ where: { slug } });
+          return { metric, rateLimited: true };
+        }
+
+        throw error;
+      }
     });
 
     return NextResponse.json({
-      views: result.views,
-      rateLimited: false,
+      views: result.metric?.views || 0,
+      rateLimited: result.rateLimited,
     });
   } catch (error) {
     console.error('Views API error:', error);

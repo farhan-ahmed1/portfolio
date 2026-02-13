@@ -20,7 +20,7 @@ export function BackButton({ href, label = 'Back', className = '' }: BackButtonP
     >
       <Link
         href={href}
-        className="group inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground focus:text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+        className="group inline-flex items-center gap-2 rounded-none border-2 border-dotted border-slate-400/80 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-slate-600 transition-colors hover:border-slate-900 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 dark:border-slate-600/80 dark:text-slate-300 dark:hover:border-slate-200 dark:hover:text-slate-100"
       >
         <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
         {label}
