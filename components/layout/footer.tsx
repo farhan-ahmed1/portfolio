@@ -1,3 +1,5 @@
+import { Github, Linkedin, Twitter } from 'lucide-react';
+
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
@@ -34,7 +36,9 @@ export function Footer() {
                   href="https://github.com/farhan-ahmed1"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
                 >
+                  <Github className="h-4 w-4" />
                   GitHub
                 </a>
               </li>
@@ -43,8 +47,21 @@ export function Footer() {
                   href="https://www.linkedin.com/in/farhan-m-ahmed/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
                 >
+                  <Linkedin className="h-4 w-4" />
                   LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://x.com/staymadfoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+                >
+                  <Twitter className="h-4 w-4" />
+                  X
                 </a>
               </li>
             </ul>
@@ -55,7 +72,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          © 2025 Farhan Ahmed. All rights reserved.
+          © 2026 Farhan Ahmed. All rights reserved.
         </div>
       </div>
     </footer>

@@ -106,7 +106,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50/80 via-blue-50/30 to-slate-100/90 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-[#fafaf8] text-slate-900 dark:bg-[#0d0f12] dark:text-slate-100 bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.12)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(226,232,240,0.12)_1px,transparent_0)] [background-size:24px_24px]">
       <ProjectStructuredData
         name={project.title}
         description={project.summary}
@@ -119,23 +119,27 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         image={`${siteUrl}${project.coverImage}`}
       />
       <BreadcrumbStructuredData items={breadcrumbStructuredData} />
-      <article className="container py-12 pt-24">
+      <article className="container py-12 pt-24 font-mono">
         <div className="mx-auto max-w-4xl">
-          {/* Breadcrumb Navigation */}
-          <Breadcrumb items={breadcrumbItems} className="mb-6" />
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b-2 border-dotted border-slate-300/80 pb-4 dark:border-slate-700/80">
+            {/* Breadcrumb Navigation */}
+            <Breadcrumb items={breadcrumbItems} className="text-xs" />
 
-          {/* Back to Projects */}
-          <BackButton href="/projects" label="Back to Projects" className="mb-8" />
+            {/* Back to Projects */}
+            <BackButton href="/projects" label="Projects Index" />
+          </div>
 
-          {/* Project Header Section */}
-          <ProjectHeader project={project} />
+          <div className="border-2 border-dotted border-slate-300/80 bg-[#fffdf8] p-6 shadow-[0_0_0_1px_rgba(15,23,42,0.06)] dark:border-slate-700/80 dark:bg-[#121317] dark:shadow-[0_0_0_1px_rgba(226,232,240,0.08)]">
+            {/* Project Header Section */}
+            <ProjectHeader project={project} />
 
-          {/* Project Metrics */}
-          <ProjectMetrics slug={project.slug} initialMetrics={project.metrics} />
+            {/* Project Metrics */}
+            <ProjectMetrics slug={project.slug} initialMetrics={project.metrics} />
 
-          {/* Detailed Content */}
-          <div className="prose prose-lg mx-auto">
-            <MDXContent content={project.content} />
+            {/* Detailed Content */}
+            <div className="mx-auto border-t-2 border-dotted border-slate-300/80 pt-6 dark:border-slate-700/80">
+              <MDXContent content={project.content} />
+            </div>
           </div>
         </div>
       </article>

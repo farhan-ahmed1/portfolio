@@ -1,5 +1,5 @@
 # Robots.txt for https://farhan-ahmed.com
-# Generated on 2025-08-22T20:36:56.367Z
+# Generated on 2026-02-13T18:12:28.136Z
 
 User-agent: *
 Allow: /
